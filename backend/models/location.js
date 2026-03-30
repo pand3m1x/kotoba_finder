@@ -2,19 +2,27 @@ import mongoose from 'mongoose'
 
 const locationSchema = new mongoose.Schema({
 
-  locationType: {
+  location_type_eng: {
     type: String,
-    required: true,
+    required: true
+  },
+    location_type_jp: {
+    type: String,
+    required: false
   },
   character: {
     type: String,
     required: true
   },
-  characterImage: {
+  character_image: {
     type: String,
     required: true
   },
-  description: {
+  description_eng: {
+    type: String,
+    required: false
+  },
+    description_jp: {
     type: String,
     required: false
   },
@@ -22,6 +30,7 @@ const locationSchema = new mongoose.Schema({
     type: Number,
     required: true
   }
+  
 })
 
 const Location = mongoose.model('Location', locationSchema)
