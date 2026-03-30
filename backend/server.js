@@ -2,7 +2,8 @@ import 'dotenv/config'
 import './config/connect.js'
 import express from 'express'
 import userRoutes from './routes/userRoute.js'
-import locationRoutes from './routes/locationRoute.js'
+// import roomRoutes from './routes/roomRoute.js'
+// import locationRoutes from './routes/locationRoute.js' //for later scope
 
 const app = express()
 import cors from 'cors'
@@ -13,8 +14,9 @@ app.use(express.json())
 app.use(cors()) //['http://localhost:5173'] < This is for anything that communicates with the backend, telling it, 'it's okay' 
 
 // app.use('/api/posts', postRoutes)
-app.use('/api/location', locationRoutes)
+// app.use('/api/location', locationRoutes)
 app.use('/api/users', userRoutes)
+// app.use('/api/room', roomRoutes)
 
 app.get('/', (req,res) => {
   res.send('hello world!')

@@ -12,7 +12,9 @@ router.post('/', async (req,res) => {
   try{
     const location = await Location.create({
                       ...req.body,
+                      author: req.user._id
     })
+
     res.status(200).json(location)
     console.log('location added', location)
   } catch (error) {

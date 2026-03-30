@@ -10,12 +10,16 @@ const roomSchema = new mongoose.Schema({
     type: String,
     required: false
   },
-  items: {
-    type: [{ 
-      type: String
-    }],
+  room_image:{
+    type: String,
     required: true
   },
+  // items: {
+  //   type: [{ 
+  //     type: String
+  //   }],
+  //   required: true Do I need this?
+  // },
   order: {
     type: Number,
     required: true

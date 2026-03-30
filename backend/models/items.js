@@ -21,12 +21,12 @@ const itemSchema = new mongoose.Schema({
   description_jp: {
     type: String,
     required: false
+  },
+  room: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Room',
+    required: true
   }
-  // room: {
-  //   type: mongoose.Types.ObjectId,
-  //   ref: 'Room',
-  //   required: true
-  // }
 
 })
 
