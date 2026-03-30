@@ -3,6 +3,7 @@ import './config/connect.js'
 import express from 'express'
 import userRoutes from './routes/userRoute.js'
 import roomRoutes from './routes/roomRoute.js'
+import itemRoutes from './routes/itemRoute.js'
 // import locationRoutes from './routes/locationRoute.js' //for later scope
 
 const app = express()
@@ -17,6 +18,7 @@ app.use(cors()) //['http://localhost:5173'] < This is for anything that communic
 // app.use('/api/location', locationRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/room', roomRoutes)
+app.use('/api/room', itemRoutes)
 
 app.get('/', (req,res) => {
   res.send('hello world!')
