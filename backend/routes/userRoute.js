@@ -10,6 +10,7 @@ import { authMiddleware } from '../utils/auth.js'
 const secret = process.env.JWT_SECRET
 const expiration = '4h'
 
+// /api/users/register
 router.post('/register',  async (req, res) => {
 
 try {
