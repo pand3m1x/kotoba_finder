@@ -17,8 +17,8 @@ app.use(cors()) //['http://localhost:5173'] < This is for anything that communic
 // app.use('/api/posts', postRoutes)
 // app.use('/api/location', locationRoutes)
 app.use('/api/users', userRoutes)
-app.use('/api/room', roomRoutes)
-app.use('/api/room', itemRoutes)
+app.use('/api/rooms', roomRoutes)
+app.use('/api/rooms', itemRoutes)
 
 app.get('/', (req,res) => {
   res.send('hello world!')

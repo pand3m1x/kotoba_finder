@@ -27,19 +27,24 @@ import Room from '../models/room.js'
 
 // });
 
-//show rooms - need to change to controlled output
+//show target room - need to change to controlled output
 
 router.get('/:id', async (req,res) => {
 
    try{
 
+      console.log("Going to room...:", req.params.id)
+
       const rooms = await Room.findById(req.params.id) 
       res.status(200).json(rooms)
+      
+      console.log("In room:", Room)
 
     } catch(err) {
 
-      console.log('Error fetching rooms:', err.message)
+      console.log('Error fetching room:', err.message)
       res.status(500).json({ message: 'Failed to fetch rooms' })  
+
     }
 
 });
