@@ -53,6 +53,41 @@ router.post('/test', async (req,res) =>{
   }
 });
 
-// gets all vocab
+// gets all vocab for user
+router.get('/:id', async (req,res) => {
+
+  try{
+
+    const user = await User.findById(req.user._id)
+                           .populate('vocab.item');
+
+    console.log("Grabbing user's learned vocab")
+    return res.json(user.vocab)
+
+  } catch(err) {
+
+    console.log(err.message, "vocab not found")
+    return res.status(500).json({ message: "failed to find vocab"})
+
+  }
+});
+
+// test route for getting by user words
+router.get('/test/:id', async (req,res) => {
+
+  try{
+    const user = await User.findById(req.params.id)
+                           .populate('vocab.item');
+
+    console.log("Grabbing user's learned vocab")
+    return res.json(user.vocab)
+
+  } catch(err) {
+
+    console.log(err.message, "vocab not found")
+    return res.status(500).json({ message: "failed to find vocab"})
+
+  }
+});
 
 export default router
