@@ -46,6 +46,8 @@ try {
 console.log('register successful')  
 });
 
+// log in route /api/user/login
+
 router.post ('/login', async (req,res) => {
 
   try {
@@ -94,4 +96,10 @@ router.get('/', (req, res) => {
  res.status(200).json(req.user)
 
 })
+
+// oAuth (for later)
+
+// delete user (for later)
+
+// change password (for later)
 export default router
