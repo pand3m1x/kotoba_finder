@@ -15,6 +15,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     minLength: 5,
+  },
+  vocab: [{
+    item:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Item'
+  },
+    learnedAt: {
+    type: Date,
+    default: Date.now
+    }
+  }],
+  currentRoom: {
+    type: number,
+    default: 1
   }
 });
 
