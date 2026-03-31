@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 const secret = process.env.JWT_SECRET
 
 export async function authMiddleware( req, res, next ) {
-console.log("HEADERS:", req.headers);
+// console.log("HEADERS:", req.headers); it works! :D
   try{
 
   let token = req.headers.authorization
