@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     }
   }],
   currentRoom: {
-    type: number,
+    type: Number,
     default: 1
   }
 });
