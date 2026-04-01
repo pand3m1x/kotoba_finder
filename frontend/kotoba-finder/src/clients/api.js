@@ -20,6 +20,26 @@ export const roomClient = axios.create({
   
 })
 
+// creating roomClient methods to simplify both API routes
+export const roomAPI = {
+  
+  //room api
+  getRoom: async (id) => { 
+      console.log("grabbing room data") // can console logs work here?
+      const res = await roomClient.get(`/${id}`)
+      return res.data
+  },
+  //item api
+  getItems: async (id) => {
+    console.log("grabbing item info") // can console logs work here?
+    const res = await roomClient.get(`/${id}/items`)
+    return res.data
+  }
+}
+// javascript.info/object-methods
+// https://www.geeksforgeeks.org/javascript/objects-in-javascript/
+// https://medium.com/@sandeep.h.hullatti/javascript-normal-function-versus-arrow-function-in-simple-way-281e70ef9a21
+
 // export const itemClient = axios.create({
 
 //   baseURL: `${BASE_URL}/api/rooms` //temperate literal

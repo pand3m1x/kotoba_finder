@@ -1,6 +1,6 @@
 // import { useState } from 'react'
 import './App.css'
-import { Routes, Route } from 'react-router-dom' //Navigate
+import { Routes, Route, Navigate } from 'react-router-dom' //Navigate
 
 //import pages
 import Login from './pages/Login'
@@ -14,7 +14,8 @@ function App() {
     <>
      <h1>Kotoba Finder</h1>
       <Routes>
-          <Route path="/" element={<GamePage />} />
+          <Route path="/" element={<Navigate to="/room/1" />} />
+          <Route path="/room/:id" element={<GamePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
       </Routes>
