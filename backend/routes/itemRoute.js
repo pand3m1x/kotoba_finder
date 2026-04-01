@@ -4,12 +4,14 @@ const router = express.Router();
 
 import Item from '../models/items.js'
 
+// use room id to populate items
 router.get('/:id/items', async (req,res) => {
 
    try{
       console.log("Looking for items:", req.params.id )
 
       const items = await Item.find({ room: req.params.id }) 
+                              .populate('room')
       
       console.log("We have items!", items)
       return res.status(200).json(items)
