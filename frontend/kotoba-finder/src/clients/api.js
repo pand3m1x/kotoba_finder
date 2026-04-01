@@ -27,12 +27,14 @@ export const roomAPI = {
   getRoom: async (id) => { 
       console.log("grabbing room data") // can console logs work here?
       const res = await roomClient.get(`/${id}`)
+      console.log(res.data)
       return res.data
   },
   //item api
   getItems: async (id) => {
     console.log("grabbing item info") // can console logs work here?
     const res = await roomClient.get(`/${id}/items`)
+    console.log(res.data)
     return res.data
   }
 }

@@ -40,6 +40,13 @@ function GamePage() {
     }
   },[id])
   //create hook for wrong answers
+   
+
+  // useState for saved/known vocab to update for login, pull from DB once at start of game
+  // everyone is using using State Variables to "store" information locally instead of local storage
+  // state Variable for non-signed in users would push to local storage
+  // look new note/notes app jades code look at how we rerendered notes instead of constant pulls from database
+
 
   return (
     <div>
@@ -93,9 +100,9 @@ function GamePage() {
               <div className="items" style={{ border: "2px solid red"}}>
                 <p>Item Check List:</p>
                 <ul>
-                  <li style={{listStyle:"none", marginLeft:"-35px"}}>
-                  <input type="checkbox" id="task1" name="task1" value="task1" />
-                  <label htmlFor="task1"> Task 1</label><br/></li>
+                  {items.map((item)=> <li style={{listStyle:"none", marginLeft:"-35px"}}>
+                  <input type="checkbox" id={item._id} name={item.item_eng} value="task1" />
+                  <label htmlFor={item.item_eng}> ???</label><br/></li>)}
                 </ul>
               </div>
           </div>
