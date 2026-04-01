@@ -67,10 +67,11 @@ function GamePage() {
                                             width: "40%"}}>
 
           <div className="hintBox" style={{border:"2px solid green"}}>
-            <p>Hint/Conversation Box Here</p>
+            <p>Hint/Conversation Box Here</p> {/* Call random items */}
           </div>
           <img src={characterIcon} style={{maxWidth:"45%"}} />
           <h4>Velma</h4>
+
         </div>
 
         {/* Actual game renders here with room, location name, checklist, item icons */}
@@ -78,8 +79,12 @@ function GamePage() {
         <div className="gamePlay" style={{ border:"2px solid black", 
                                           borderRadius: "10px", 
                                           backgroundColor:"rgba(128, 128, 128, 0.75)",
-                                          maxWidth: "65%" }}>
-            <h2>Living Room</h2>
+                                          maxWidth: "65%",
+                                          display: "flex",
+                                          flexDirection: "column",
+                                          alignItems: "center",
+                                          padding:"5px"}}>
+            <h2>{room?.room_name}</h2>  {/* Call Room*/}
 
           {/* This is what is connected to the api */}
           <div className="roomInfo" style={{ border: "2px solid orange", 
@@ -98,9 +103,9 @@ function GamePage() {
 
                 {/* check list for items, populates room items */}
               <div className="items" style={{ border: "2px solid red"}}>
-                <p>Item Check List:</p>
-                <ul>
-                  {items.map((item)=> <li style={{listStyle:"none", marginLeft:"-35px"}}>
+                <p>Item Check List:</p> 
+                  <ul>
+                    {items.map((item)=> <li key={item._id} style={{listStyle:"none", marginLeft:"-35px"}}>
                   <input type="checkbox" id={item._id} name={item.item_eng} value="task1" />
                   <label htmlFor={item.item_eng}> ???</label><br/></li>)}
                 </ul>
@@ -126,6 +131,12 @@ export default GamePage
 //https://www.moesif.com/blog/technical/api-design/REST-API-Design-Best-Practices-for-Sub-and-Nested-Resources/
 //https://stackoverflow.com/questions/20951419/what-are-best-practices-for-rest-nested-resources
 //https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/
+
+
+// For conditional rendering:
+
+//https://react.dev/learn/conditional-rendering
+
 
 // Old Data/Code Graveyard :
     // //  fetch(`${import.meta.env.VITE_BASE_URL}/api/rooms/69cae83de20491b659e2d66f/items`)
