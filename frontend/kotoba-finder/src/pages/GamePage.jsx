@@ -2,9 +2,28 @@ import livingroomIcon from '../assets/livingroom/livingroom.svg';
 import coffeeTableIcon from '../assets/livingroom/coffee_table.svg';
 import characterIcon from '../assets/characters/Velma.svg'
 
+import { useEffect,useState } from 'react'
+import { roomClient } from "../clients/api"
+
 function GamePage() {
+ const [room,setRoom] = useState(null)
+ const [items,setItems] = useState(null)
+
 
 //create hook for wrong answers
+
+// bring in client to populate images
+  useEffect(()=>{
+    async function getData() {
+      // const { data } = await roomClient.get('/69cae83de20491b659e2d66f') // /:id
+      const { data } = await roomClient.get('/69cae83de20491b659e2d66f/items')
+      console.log(data)
+      setRoom(data.room)
+      setItems(data)
+    }
+    getData()
+    
+  },[])
 
   return (
     <div>
@@ -60,7 +79,7 @@ function GamePage() {
                 <ul>
                   <li style={{listStyle:"none", marginLeft:"-35px"}}>
                   <input type="checkbox" id="task1" name="task1" value="task1" />
-                  <label for="task1"> Task 1</label><br/></li>
+                  <label htmlFor="task1"> Task 1</label><br/></li>
                 </ul>
               </div>
           </div>
