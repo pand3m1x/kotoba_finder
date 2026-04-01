@@ -8,6 +8,9 @@ import { useParams } from 'react-router-dom'
 
 function GamePage() {
 
+  const { id } = useParams();
+  //https://reactrouter.com/api/hooks/useParams
+
   //dynamic room path?
 
  const [room,setRoom] = useState(null)
@@ -19,23 +22,23 @@ function GamePage() {
  useEffect(()=>{
    async function getData() {
      
-     fetch(`${import.meta.env.VITE_BASE_URL}/api/rooms/69cae83de20491b659e2d66f/items`)
-     .then(response => response.json())
-     .then(data => {
-       console.log(data)
-       setRoom(data.room)
-       setItems(data)
-        })
-        .catch(error => console.error('Error fetching items:', error))
-      // const { data } = await roomClient.get('/69cae83de20491b659e2d66f') // /:id
-      // const { data } = await roomClient.get('/69cae83de20491b659e2d66f/items')
-      // console.log(data)
-      // setRoom(data.room)
-      // setItems(data)
+    try {
+      console.log("fetching data", id)
+      const roomData = await roomAPI.getRoom(id);
+      const itemData = await roomAPI.getItems(id);
+
+      setRoom(roomData)
+      setItems(itemData)
+    } catch(err) {
+
+      console.log('Error fetching data:', err.message)
     }
-    getData()
-    
-  },[])
+  }
+  
+  if (id) {
+    getData();  
+    }
+  },[id])
   //create hook for wrong answers
 
   return (
@@ -113,6 +116,21 @@ export default GamePage
 
 //Nesting API information:
 
-//https://www.moesif.com/blog/technical/api-design/REST-API-Design-Best-Practices-for-Sub-and-Nested-Resources/?utm_source=chatgpt.com
-//https://stackoverflow.com/questions/20951419/what-are-best-practices-for-rest-nested-resources?utm_source=chatgpt.com
-//https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/?utm_source=chatgpt.com
+//https://www.moesif.com/blog/technical/api-design/REST-API-Design-Best-Practices-for-Sub-and-Nested-Resources/
+//https://stackoverflow.com/questions/20951419/what-are-best-practices-for-rest-nested-resources
+//https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/
+
+// Old Data/Code Graveyard :
+    // //  fetch(`${import.meta.env.VITE_BASE_URL}/api/rooms/69cae83de20491b659e2d66f/items`)
+    // //  .then(response => response.json())
+    // //  .then(data => {
+    // //    console.log(data)
+    // //    setRoom(data.room)
+    // //    setItems(data)
+    //     })
+    //     .catch(error => console.error('Error fetching items:', error))
+    //   // const { data } = await roomClient.get('/69cae83de20491b659e2d66f') // /:id
+    //   // const { data } = await roomClient.get('/69cae83de20491b659e2d66f/items')
+    //   // console.log(data)
+    //   // setRoom(data.room)
+    //   // setItems(data)
