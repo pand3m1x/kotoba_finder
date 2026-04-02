@@ -42,8 +42,8 @@ function GamePage() {
   const [ targetItem,setTargetItem ] =useState(null) // Character says
   const [ foundItem,setFoundItem ] = useState(null) // player successfully found
 
-  function handleItemClick(e){
-      console.log("Clicked me!",e) // this is where we check out conditional anything to do with checking if correct image/word, check box is checked, and useState for render is changed
+  function handleItemClick(item){
+      console.log("Clicked me!", item) // this is where we check out conditional anything to do with checking if correct image/word, check box is checked, and useState for render is changed
 
        // if no item
       if(!targetItem) {
@@ -51,15 +51,22 @@ function GamePage() {
         alert("Slow your horses! xD ")
         return;
       } 
+
+      //if target
+      if (item._id === targetItem._id) {
+        console.log("that is the target item!",targetItem._id)
+        alert("Good Job!")
+        return;
+      }
   }
 
-  //character tells player what item to find:
-  // useEffect(()=>{
+  //character tells player what item to find: (currently hardcoded, at random later)
+  useEffect(()=>{
 
-  //   if(!items.length) return;
-  //   setTargetItem(items[0])
+    if(!items.length) return;
+    setTargetItem(items[0])
 
-  // }, [items])
+  }, [items])
   //create hook for wrong answers
    
 
@@ -150,7 +157,7 @@ function GamePage() {
                                               display: "flex", 
                                               justifyContent: "space-around" }} >
 
-          {items.slice(0,3).map((item) => <WordImage key={item._id} item={item} onClick={handleItemClick}/>
+          {items.slice(0,3).map((item) => <WordImage key={item._id} item={item} onClick={()=>handleItemClick(item)}/> 
                                                )}
 
           </div> 
@@ -173,6 +180,10 @@ export default GamePage
 // For conditional rendering:
 
 //https://react.dev/learn/conditional-rendering
+
+// when to use parenthesis()
+ //https://javascript.plainenglish.io/curly-braces-versus-parenthesis-in-reactjs-4d3ffd33128f 
+
 
 
 // Old Data/Code Graveyard :
