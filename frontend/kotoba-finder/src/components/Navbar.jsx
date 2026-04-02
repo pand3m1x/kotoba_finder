@@ -18,6 +18,8 @@ function Navbar(){
           <li><Link to="/register">Register</Link></li>
           {"|"}
           <li><Link to="/login">Login</Link></li>
+          {/* <li><Link to="/logout">Logout</Link></li>
+          <li><Link to="/vocab">Vocab Deck</Link></li> */}
         </ul>
       </nav>
     </>
