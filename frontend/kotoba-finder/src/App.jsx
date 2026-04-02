@@ -2,6 +2,9 @@
 import './App.css'
 import { Routes, Route, Navigate } from 'react-router-dom' //Navigate
 
+//import components
+import Navbar from './components/Navbar'
+
 //import pages
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -12,7 +15,8 @@ function App() {
 
   return (
     <>
-     <h1>Kotoba Finder</h1>
+      <Navbar />
+     {/* <h1>Kotoba Finder</h1> */}
       <Routes>
           <Route path="/" element={<Navigate to="/room/69cae83de20491b659e2d66f" />} />
           <Route path="/room/:id" element={<GamePage />} />

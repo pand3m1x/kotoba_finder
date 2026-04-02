@@ -66,7 +66,7 @@ Folder Tree with correctly rendered components, api is called correctly:
 
 GAMEPAGE []
 
-Gameplay area that loads room with correct items []
+Gameplay area that loads room with correct items [x]
 allows progression to next room after all items collect []
 
 

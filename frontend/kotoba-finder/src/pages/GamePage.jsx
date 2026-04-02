@@ -145,9 +145,6 @@ function GamePage() {
                                                 style={{ maxWidth:"25%",
                                                          margin: "-5px" }} />)}
 
-            {/* <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
-            <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
-            <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/> */}
           </div> 
         </div>
       </div>
@@ -184,3 +181,7 @@ export default GamePage
     //   // console.log(data)
     //   // setRoom(data.room)
     //   // setItems(data)
+
+                {/* <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
+            <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
+            <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/> */}
