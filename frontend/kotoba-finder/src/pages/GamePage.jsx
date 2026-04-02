@@ -47,6 +47,7 @@ function GamePage() {
 
     if(!items.length) return;
     setTargetItem(items[0])
+
   }, [items])
   //create hook for wrong answers
    
@@ -55,7 +56,7 @@ function GamePage() {
   // everyone is using using State Variables to "store" information locally instead of local storage
   // state Variable for non-signed in users would push to local storage
   // look new note/notes app jades code look at how we rerendered notes instead of constant pulls from database
-
+  const [ knownVocab, setKnownVocab ] = useState(null)
 
   return (
     <div>
@@ -115,15 +116,25 @@ function GamePage() {
               <div className="items" style={{ border: "2px solid red"}}>
                 <p>Item Check List:</p> 
                   <ul>
-                    {items.map((item)=> <li key={item._id} style={{listStyle:"none", marginLeft:"-35px"}}>
-                  <input type="checkbox" id={item._id} name={item.item_eng} value="task1" />
-                  <label htmlFor={item.item_eng}> ???</label><br/></li>)}
+                    {items.map((item)=> <li key={item._id} 
+                                            style={{listStyle:"none", 
+                                                    marginLeft:"-35px"}}>
+
+                  <input type="checkbox" id={item._id} 
+                                         name={item.item_eng} 
+                                         value="task1" />
+
+                  <label htmlFor={item.item_eng}> {item.item_eng}</label><br/></li>)}
+
                 </ul>
               </div>
           </div>
 
           {/* items populate, one correct item */}
-          <div className="roomItems" style={{ border: "2px solid green", display: "flex", justifyContent: "space-around" }} >
+          <div className="roomItems" style={{ border: "2px solid green", 
+                                              display: "flex", 
+                                              justifyContent: "space-around" }} >
+                                                
             <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
             <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
             <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
