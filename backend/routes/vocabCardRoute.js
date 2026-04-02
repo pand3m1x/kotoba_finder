@@ -85,6 +85,7 @@ router.get('/test/:id', async (req,res) => {
   try{
     const user = await User.findById(req.params.id)
                            .populate('vocab.item');
+    console.log(user)
 
     console.log("Grabbing user's learned vocab")
     return res.json(user.vocab)
