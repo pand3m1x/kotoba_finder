@@ -54,9 +54,16 @@ function GamePage() {
 
       //if target
       if (item._id === targetItem._id) {
-        console.log("that is the target item!",targetItem._id)
+        console.log("that is the target item!",targetItem.item_eng)
         alert("Good Job!")
         return;
+
+      } else {
+
+        console.log("not correct:", `${item.item_eng} is not ${targetItem.item_eng}`)
+        alert("try again!")
+        return;
+
       }
   }
 
