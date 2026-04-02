@@ -57,6 +57,7 @@ function GamePage() {
   // state Variable for non-signed in users would push to local storage
   // look new note/notes app jades code look at how we rerendered notes instead of constant pulls from database
   const [ knownVocab, setKnownVocab ] = useState(null)
+  // JSON.parse(localStorage.getItem("vocab")).includes(item.item_eng) ? item.item_eng : "???"
 
   return (
     <div>
@@ -110,7 +111,8 @@ function GamePage() {
                                                    flexDirection: "column",
                                                    alignItems:"center" }} >
                 <p>identify the items in the room and add them to your checklist</p>
-                <img src={room?.room_image} alt="Isometric view of a cute and cozy living room" style={{width:"70%"}} />
+                <img src={room?.room_image} alt="Isometric view of a cute and cozy living room" 
+                                            style={{width:"70%"}} />
               </div>
 
                 {/* check list for items, populates room items */}
@@ -121,11 +123,12 @@ function GamePage() {
                                             style={{listStyle:"none", 
                                                     marginLeft:"-35px"}}>
 
-                  <input type="checkbox" id={item._id} 
+                    <input type="checkbox" id={item._id} 
                                          name={item.item_eng} 
                                          value="task1" />
 
-                  <label htmlFor={item.item_eng}> {item.item_eng}</label><br/></li>)}
+                    <label htmlFor={item.item_eng}> 
+                                   {item.item_eng}</label><br/></li>)}
 
                 </ul>
               </div>
@@ -136,9 +139,15 @@ function GamePage() {
                                               display: "flex", 
                                               justifyContent: "space-around" }} >
 
+          {items.slice(0,3).map((item) => <img key={item._id}
+                                                src={item?.item_image} 
+                                                alt={item.item_eng} 
+                                                style={{ maxWidth:"25%",
+                                                         margin: "-5px" }} />)}
+
+            {/* <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
             <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
-            <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
-            <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
+            <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/> */}
           </div> 
         </div>
       </div>
@@ -148,6 +157,7 @@ function GamePage() {
 
 export default GamePage
 
+// {items.splice(2,2).map((item) => <img src={item?.item_image} alt="Coffee table" style={{ maxWidth:"25%"}}/>)}
 //Nesting API information:
 
 //https://www.moesif.com/blog/technical/api-design/REST-API-Design-Best-Practices-for-Sub-and-Nested-Resources/
