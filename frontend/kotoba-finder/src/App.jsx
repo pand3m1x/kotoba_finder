@@ -9,6 +9,7 @@ import Navbar from './components/Navbar'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import GamePage from './pages/GamePage'
+import Vocab from './pages/Vocab'
 
 function App() {
   
@@ -22,6 +23,7 @@ function App() {
           <Route path="/room/:id" element={<GamePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/vocab" element={<Vocab />} />
       </Routes>
     </>
   )
