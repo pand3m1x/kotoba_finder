@@ -11,11 +11,9 @@ function GamePage() {
   const { id } = useParams();
   //https://reactrouter.com/api/hooks/useParams
 
-  //dynamic room path?
-
+  //setting room and items for gamepage
  const [room,setRoom] = useState(null)
  const [items,setItems] = useState([])
-
 
  
  // bring in client to populate stuff 
@@ -39,6 +37,17 @@ function GamePage() {
     getData();  
     }
   },[id])
+
+  // game play dynamics of target items and finding target items
+  const [ targetItem,setTargetItem ] =useState(null) // Character says
+  const [ foundItem,setFoundItem ] = useState(null) // player successfully found
+
+  //character tells player what item to find:
+  useEffect(()=>{
+
+    if(!items.length) return;
+    setTargetItem(items[0])
+  }, [items])
   //create hook for wrong answers
    
 
@@ -67,7 +76,8 @@ function GamePage() {
                                             width: "40%"}}>
 
           <div className="hintBox" style={{border:"2px solid green"}}>
-            <p>Hint/Conversation Box Here</p> {/* Call random items */}
+            <p> {targetItem? `Help me find the ${targetItem.item_eng}` : "Hmmmm"}
+            </p> {/* Call random items */}
           </div>
           <img src={characterIcon} style={{maxWidth:"45%"}} />
           <h4>Velma</h4>
