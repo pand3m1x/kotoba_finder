@@ -1,9 +1,9 @@
 
 // for the random image item finder render
 
-function WordImage({ onClick, item }){
+function WordImage({ handleItemClick, item }){
 
-  function clickImage(){onClick(item._id)}
+  function clickImage(){handleItemClick(item._id)}
  
   return(
     <>

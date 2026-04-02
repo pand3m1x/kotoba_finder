@@ -42,18 +42,24 @@ function GamePage() {
   const [ targetItem,setTargetItem ] =useState(null) // Character says
   const [ foundItem,setFoundItem ] = useState(null) // player successfully found
 
-  function onClick(e){
-      console.log(e) // this is where we check out conditional anything to do with checking if correct image/word, check box is checked, and useState for render is changed
+  function handleItemClick(e){
+      console.log("Clicked me!",e) // this is where we check out conditional anything to do with checking if correct image/word, check box is checked, and useState for render is changed
 
+       // if no item
+      if(!targetItem) {
+        console.log("no target item")
+        alert("Slow your horses! xD ")
+        return;
+      } 
   }
 
   //character tells player what item to find:
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    if(!items.length) return;
-    setTargetItem(items[0])
+  //   if(!items.length) return;
+  //   setTargetItem(items[0])
 
-  }, [items])
+  // }, [items])
   //create hook for wrong answers
    
 
@@ -144,7 +150,7 @@ function GamePage() {
                                               display: "flex", 
                                               justifyContent: "space-around" }} >
 
-          {items.slice(0,3).map((item) => <WordImage key={item._id} item={item} onClick={onClick}/>
+          {items.slice(0,3).map((item) => <WordImage key={item._id} item={item} onClick={handleItemClick}/>
                                                )}
 
           </div> 
