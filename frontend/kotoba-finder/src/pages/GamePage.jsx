@@ -91,7 +91,27 @@ const { id } = useParams();
       }
 
   }, [ items, currentItemIndex ])
-  //create hook for wrong answers
+  
+  // for targeting the images (and make them rotate but always display the target Item)
+  // https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript
+  // https://coureywong.medium.com/how-to-shuffle-an-array-of-items-in-javascript-39b9efe4b567
+
+  function shuffleImages(array){
+    // we don't want to do what I accidently did with splice and affect the original data, so make a copy - right?
+    const newArray = [...array]
+
+    //shuffle with fisher ray method
+    for (let i = array.length - 1; i > 0; i--) { 
+    const j = Math.floor(Math.random() * (i + 1)); 
+
+    //so j is just like i, but we call it j so we don't confuse i with j lol
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]]; 
+
+    console.log(shuffledArray); 
+  }
+  return newArray; 
+
+  }
    
 
   // useState for saved/known vocab to update for login, pull from DB once at start of game
