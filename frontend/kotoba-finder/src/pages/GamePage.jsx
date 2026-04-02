@@ -9,19 +9,25 @@ import WordImage from '../components/wordImage' // just hating for some reason
 // let currentItemIndex = 0
 
 function GamePage() {
-
-const [ currentItemIndex, setCurrentItemIndex] = useState(0)
-const { id } = useParams();
+  
+  const [ currentItemIndex, setCurrentItemIndex] = useState(0)
+  const { id } = useParams();
   //https://reactrouter.com/api/hooks/useParams
-
+  
   //setting room and items for gamepage
- const [room,setRoom] = useState(null)
- const [items,setItems] = useState([])
+  const [room,setRoom] = useState(null)
+  const [items,setItems] = useState([])
+  
+  // game play dynamics of target items and finding target items
+  const [ targetItem,setTargetItem ] =useState(null) // Character says
+  const [ foundItems,setFoundItems ] = useState([]) // player successfully found
+  
+  // player makes choice from array of images
+  const [playerChoices, setPlayerChoices] = useState([])
 
- 
- // bring in client to populate stuff 
- useEffect(()=>{
-   async function getData() {
+  // bring in client to populate stuff 
+  useEffect(()=>{
+    async function getData() {
      
     try {
       console.log("fetching data", id)
@@ -31,20 +37,58 @@ const { id } = useParams();
       setRoom(roomData)
       setItems(itemData)
     } catch(err) {
-
+      
       console.log('Error fetching data:', err.message)
     }
   }
   
   if (id) {
     getData();  
-    }
-  },[id])
+  }
+},[id])
 
-  // game play dynamics of target items and finding target items
-  const [ targetItem,setTargetItem ] =useState(null) // Character says
-  const [ foundItems,setFoundItems ] = useState([]) // player successfully found
+// for targeting the images (and make them rotate but always display the target Item)
+// https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript
+// https://coureywong.medium.com/how-to-shuffle-an-array-of-items-in-javascript-39b9efe4b567
 
+// to randomize images/array
+function shuffleImages(array){
+  // we don't want to do what I accidently did with splice and affect the original data, so make a copy - right?
+  const newArray = [...array]
+
+  //shuffle with fisher yate method
+  for (let i = newArray.length - 1; i > 0; i--) { 
+  const j = Math.floor(Math.random() * (i + 1)); 
+
+  //so j is just like i, but we call it j so we don't confuse i with j lol
+  [newArray[i], newArray[j]] = [newArray[j], newArray[i]]; 
+
+  console.log("shuffled", newArray); 
+}
+return newArray; 
+
+}
+
+// for the image player choice population
+  useEffect(()=>{
+    if( !targetItem || items.length < 3 ) return
+
+    //set wrong items
+    const wrongItems = items.filter(
+      (item)=> item._id !== targetItem._id )
+
+    //correct answer item with wrong items
+    const randomWrongItems = shuffleImages(wrongItems).slice(0,2)
+
+    const mixedPlayerChoices = shuffleImages([
+      targetItem,
+      ...randomWrongItems
+    ])
+
+    setPlayerChoices(mixedPlayerChoices) 
+  }, [ targetItem, items ])
+
+  // the event listener for the image clicked
   function handleItemClick(item){
       console.log("Clicked me!", item) // this is where we check out conditional anything to do with checking if correct image/word, check box is checked, and useState for render is changed
 
@@ -74,15 +118,14 @@ const { id } = useParams();
         //dang, answer no good
         console.log("not correct:", `${item.item_eng} is not ${targetItem.item_eng}`)
         return alert("try again!")
-        
 
       }
-  }
-
+    }
+    
   // function determineTargetItem(){
 
   // }
-  //character tells player what item to find: (currently hardcoded, at random later)
+  //character tells player what item to find: (currently set to start of array)
   useEffect(()=>{
 
     if (items.length > 0){
@@ -92,27 +135,9 @@ const { id } = useParams();
 
   }, [ items, currentItemIndex ])
   
-  // for targeting the images (and make them rotate but always display the target Item)
-  // https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript
-  // https://coureywong.medium.com/how-to-shuffle-an-array-of-items-in-javascript-39b9efe4b567
 
-  function shuffleImages(array){
-    // we don't want to do what I accidently did with splice and affect the original data, so make a copy - right?
-    const newArray = [...array]
 
-    //shuffle with fisher ray method
-    for (let i = array.length - 1; i > 0; i--) { 
-    const j = Math.floor(Math.random() * (i + 1)); 
-
-    //so j is just like i, but we call it j so we don't confuse i with j lol
-    [newArray[i], newArray[j]] = [newArray[j], newArray[i]]; 
-
-    console.log(shuffledArray); 
-  }
-  return newArray; 
-
-  }
-   
+  
 
   // useState for saved/known vocab to update for login, pull from DB once at start of game
   // everyone is using using State Variables to "store" information locally instead of local storage
@@ -202,7 +227,7 @@ const { id } = useParams();
                                               display: "flex", 
                                               justifyContent: "space-around" }} >
 
-          {items.slice(0,3).map((item) => <WordImage key={item._id} 
+          {playerChoices.map((item) => <WordImage key={item._id} 
                                                      item={item} 
                                                      onClick={()=>handleItemClick(item)} /> )}
 
