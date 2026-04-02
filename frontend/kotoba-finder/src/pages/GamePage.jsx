@@ -105,11 +105,12 @@ function GamePage() {
                   {/* the actual room render */}
               <div className="roomRender" style={{ border: "2px solid white",
                                                    maxWidth: "70%",
+                                                   minWidth: "70%",
                                                    display: "flex",
                                                    flexDirection: "column",
                                                    alignItems:"center" }} >
                 <p>identify the items in the room and add them to your checklist</p>
-                <img src={livingroomIcon} alt="Isometric view of a cute and cozy living room" style={{width:"70%"}} />
+                <img src={room?.room_image} alt="Isometric view of a cute and cozy living room" style={{width:"70%"}} />
               </div>
 
                 {/* check list for items, populates room items */}
@@ -134,7 +135,7 @@ function GamePage() {
           <div className="roomItems" style={{ border: "2px solid green", 
                                               display: "flex", 
                                               justifyContent: "space-around" }} >
-                                                
+
             <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
             <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
             <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
