@@ -4,7 +4,7 @@ import characterIcon from '../assets/characters/Velma.svg'
 import { useEffect,useState } from 'react'
 import { roomAPI } from "../clients/api"
 import { useParams } from 'react-router-dom'
-import WordImage from '../components/WordImage' // just hating for some reason
+import WordImage from '../components/wordImage' // just hating for some reason
 
 function GamePage() {
 
