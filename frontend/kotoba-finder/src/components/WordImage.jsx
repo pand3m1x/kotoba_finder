@@ -12,7 +12,8 @@ function WordImage({ handleItemClick, item }){
                                                 src={item?.item_image} 
                                                 alt={item.item_eng} 
                                                 style={{ maxWidth:"25%",
-                                                         margin: "-5px" }} />
+                                                         margin: "-5px",
+                                                         cursor: "pointer" }} />
     </>
   );
 }

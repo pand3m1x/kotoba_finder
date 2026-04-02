@@ -6,6 +6,8 @@ import { roomAPI } from "../clients/api"
 import { useParams } from 'react-router-dom'
 import WordImage from '../components/wordImage' // just hating for some reason
 
+let currentItemIndex = 0
+
 function GamePage() {
 
   const { id } = useParams();
@@ -40,7 +42,7 @@ function GamePage() {
 
   // game play dynamics of target items and finding target items
   const [ targetItem,setTargetItem ] =useState(null) // Character says
-  const [ foundItem,setFoundItem ] = useState(null) // player successfully found
+  const [ foundItems,setFoundItems ] = useState([]) // player successfully found
 
   function handleItemClick(item){
       console.log("Clicked me!", item) // this is where we check out conditional anything to do with checking if correct image/word, check box is checked, and useState for render is changed
@@ -52,14 +54,21 @@ function GamePage() {
         return;
       } 
 
-      //if target
+      //if target found
       if (item._id === targetItem._id) {
         console.log("that is the target item!",targetItem.item_eng)
         alert("Good Job!")
+        
+        //this is where found items live (making an array of found items :) )
+        setFoundItems((prev) => [...prev, item._id])
+        currentItemIndex++
+        setTargetItem(items[currentItemIndex])
+
         return;
 
       } else {
-
+        
+        //dang, answer no good
         console.log("not correct:", `${item.item_eng} is not ${targetItem.item_eng}`)
         alert("try again!")
         return;
@@ -67,11 +76,15 @@ function GamePage() {
       }
   }
 
+  // function determineTargetItem(){
+
+  // }
   //character tells player what item to find: (currently hardcoded, at random later)
   useEffect(()=>{
 
-    if(!items.length) return;
-    setTargetItem(items[0])
+    if(!items.length)
+    setTargetItem(items[currentItemIndex])
+     return;
 
   }, [items])
   //create hook for wrong answers
@@ -84,6 +97,7 @@ function GamePage() {
   const [ knownVocab, setKnownVocab ] = useState(null)
   // JSON.parse(localStorage.getItem("vocab")).includes(item.item_eng) ? item.item_eng : "???"
 
+  console.log(foundItems)
   return (
     <div>
         <h2>Game Page</h2>
@@ -150,7 +164,7 @@ function GamePage() {
 
                     <input type="checkbox" id={item._id} 
                                          name={item.item_eng} 
-                                         value="task1" />
+                                          checked={foundItems.includes(item._id)} disabled />
 
                     <label htmlFor={item.item_eng}> 
                                    {item.item_eng}</label><br/></li>)}
@@ -164,8 +178,9 @@ function GamePage() {
                                               display: "flex", 
                                               justifyContent: "space-around" }} >
 
-          {items.slice(0,3).map((item) => <WordImage key={item._id} item={item} onClick={()=>handleItemClick(item)}/> 
-                                               )}
+          {items.slice(0,3).map((item) => <WordImage key={item._id} 
+                                                     item={item} 
+                                                     onClick={()=>handleItemClick(item)} /> )}
 
           </div> 
         </div>
