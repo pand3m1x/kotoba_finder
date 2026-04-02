@@ -1,6 +1,27 @@
-
+import {useState,useEffect} from 'react'
+import { vocabClient } from '../clients/api'
 
 function Vocab() {
+
+  const [vocab,setVocab] = useState([])
+  useEffect(()=>{
+     async function getData() {
+       
+      try {
+      const { data } = await vocabClient.get('/69cbe3abb03793bb77a07ea1') // /:id
+      console.log(data)
+      
+      setVocab(data)
+      } catch(err) {
+  
+        console.log('Error fetching data:', err.message)
+      }
+    }
+    
+    
+      getData();  
+      
+    },[])
 
   return(
     <div>
@@ -13,7 +34,7 @@ function Vocab() {
 
         </div>
         <div className="controlArea">
-          <div clasName="infoTop" style={{border:"2px solid yellow",
+          <div className="infoTop" style={{border:"2px solid yellow",
                                           display:"flex",
                                           flexDirection:"column",
                                           alignItems:"center"}}>

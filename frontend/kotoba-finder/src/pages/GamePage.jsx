@@ -1,10 +1,10 @@
-import livingroomIcon from '../assets/livingroom/livingroom.svg';
-import coffeeTableIcon from '../assets/livingroom/coffee_table.svg';
+
 import characterIcon from '../assets/characters/Velma.svg'
 
 import { useEffect,useState } from 'react'
 import { roomAPI } from "../clients/api"
 import { useParams } from 'react-router-dom'
+import WordImage from '../components/WordImage' // just hating for some reason
 
 function GamePage() {
 
@@ -41,6 +41,11 @@ function GamePage() {
   // game play dynamics of target items and finding target items
   const [ targetItem,setTargetItem ] =useState(null) // Character says
   const [ foundItem,setFoundItem ] = useState(null) // player successfully found
+
+  function onClick(e){
+      console.log(e) // this is where we check out conditional anything to do with checking if correct image/word, check box is checked, and useState for render is changed
+
+  }
 
   //character tells player what item to find:
   useEffect(()=>{
@@ -139,11 +144,8 @@ function GamePage() {
                                               display: "flex", 
                                               justifyContent: "space-around" }} >
 
-          {items.slice(0,3).map((item) => <img key={item._id}
-                                                src={item?.item_image} 
-                                                alt={item.item_eng} 
-                                                style={{ maxWidth:"25%",
-                                                         margin: "-5px" }} />)}
+          {items.slice(0,3).map((item) => <WordImage key={item._id} item={item} onClick={onClick}/>
+                                               )}
 
           </div> 
         </div>
