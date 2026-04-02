@@ -62,10 +62,10 @@ const { id } = useParams();
         //this is where found items live (making an array of found items :) )
         setFoundItems((prev) => [...prev, item._id])
         
-        const nextItemIndex = currentItemIndex+1
-        setCurrentItemIndex(nextItemIndex)
+        // const nextItemIndex = currentItemIndex+1
+        setCurrentItemIndex((prev) => prev + 1)
         // currentItemIndex++
-        setTargetItem(items[nextItemIndex])
+        // setTargetItem(items[nextItemIndex])
         return alert("Good Job!")
 
 
@@ -101,7 +101,7 @@ const { id } = useParams();
   const [ knownVocab, setKnownVocab ] = useState(null)
   // JSON.parse(localStorage.getItem("vocab")).includes(item.item_eng) ? item.item_eng : "???"
 
-  console.log(foundItems)
+  console.log(currentItemIndex)
   return (
     <div>
         <h2>Game Page</h2>
