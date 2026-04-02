@@ -6,11 +6,12 @@ import { roomAPI } from "../clients/api"
 import { useParams } from 'react-router-dom'
 import WordImage from '../components/wordImage' // just hating for some reason
 
-let currentItemIndex = 0
+// let currentItemIndex = 0
 
 function GamePage() {
 
-  const { id } = useParams();
+const [ currentItemIndex, setCurrentItemIndex] = useState(0)
+const { id } = useParams();
   //https://reactrouter.com/api/hooks/useParams
 
   //setting room and items for gamepage
@@ -50,28 +51,30 @@ function GamePage() {
        // if no item
       if(!targetItem) {
         console.log("no target item")
-        alert("Slow your horses! xD ")
-        return;
+        return alert("Slow your horses! xD ")
+        
       } 
 
       //if target found
       if (item._id === targetItem._id) {
         console.log("that is the target item!",targetItem.item_eng)
-        alert("Good Job!")
         
         //this is where found items live (making an array of found items :) )
         setFoundItems((prev) => [...prev, item._id])
-        currentItemIndex++
-        setTargetItem(items[currentItemIndex])
+        
+        const nextItemIndex = currentItemIndex+1
+        setCurrentItemIndex(nextItemIndex)
+        // currentItemIndex++
+        setTargetItem(items[nextItemIndex])
+        return alert("Good Job!")
 
-        return;
 
       } else {
         
         //dang, answer no good
         console.log("not correct:", `${item.item_eng} is not ${targetItem.item_eng}`)
-        alert("try again!")
-        return;
+        return alert("try again!")
+        
 
       }
   }
@@ -82,11 +85,12 @@ function GamePage() {
   //character tells player what item to find: (currently hardcoded, at random later)
   useEffect(()=>{
 
-    if(!items.length)
+    if (items.length > 0){
     setTargetItem(items[currentItemIndex])
-     return;
+      // return;
+      }
 
-  }, [items])
+  }, [ items, currentItemIndex ])
   //create hook for wrong answers
    
 
