@@ -16,7 +16,7 @@ function Navbar(){
                     margin:"5px",}}>
 
        <li  style={{listStyle:"none", }}>
-         <Link to="/"><b>Kotoba Finder</b></Link>
+         <Link to="/"><b>Kotoba Finder</b>🔍</Link>
        </li>
        
        {user && <p>こんにちは {user.username} </p>}

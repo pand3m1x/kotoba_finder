@@ -71,7 +71,8 @@ function Vocab() {
                                           flexDirection:"column",
                                           alignItems:"center"}}>
 
-              {vocab.length === 0 ? (<p>No vocab found</p>) :
+              {vocab.length === 0 ? (<p>No vocab found! Have you played the game yet? <br/> 
+                                      <a href="/room/69cae83de20491b659e2d66f"><b>Kotoba Finder</b>🔍</a></p>) :
               (vocab.slice(index,index+1).map((word)=>{
                 const { item } = word  
                 return <div key={word._id} style={{border:"2px solid lightBlue",
