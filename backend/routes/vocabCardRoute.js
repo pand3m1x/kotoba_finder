@@ -35,7 +35,7 @@ import User from '../models/user.js';
 //   }
 // });
 
-// test rout /vocab/test
+// test route /vocab/test
 router.post('/test', async (req,res) =>{
 
   console.log("test route hit")
