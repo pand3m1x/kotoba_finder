@@ -1,5 +1,8 @@
-About my final project: Kotoba Finder (Name Pending):
+About my final project: Kotoba Finder :
 
+Deployed! :D
+
+https://kotobafinder.netlify.app/
 
 Check List:
 
@@ -33,25 +36,25 @@ Routes:
 
 ## FRONTEND
 
-Set up APP and MAIN []
+Set up APP and MAIN [x]
 
 Folder Tree with correctly rendered components, api is called correctly:
 
 /SRC 
   /pages
-    GamePage (for rooms to render in) []
-    Login []
-    Register []
-    Vocab [] (test routes first)
-    Vocab [] (needs auth to work)
+    GamePage (for rooms to render in) [x]
+    Login [x]
+    Register [x]
+    Vocab [x] (test routes first)
+    Vocab [x] (needs auth to work)
 
   /context
-    UserContext []
+    UserContext [x]
 
   /components
-    Navbar []
+    Navbar [x]
     Room []
-    VocabCard []
+    VocabCard [x]
 
   /clients
     api [x]
@@ -63,11 +66,14 @@ Folder Tree with correctly rendered components, api is called correctly:
     /kitchen [x]
     /laundryroom [x]
     /livingroom [x]
+    * decided to move things to cloud based storage: https://console.cloudinary.com/ [x]
 
 GAMEPAGE []
 
 Gameplay area that loads room with correct items [x]
 allows progression to next room after all items collect []
+
+Make Beautiful [x] // will improve more later
 
 
  Additional Readings:
@@ -77,3 +83,16 @@ allows progression to next room after all items collect []
 
  https://medium.com/@blog.iroidsolutions/how-to-build-a-music-streaming-app-like-spotify-features-cost-15c09d8613c1
  https://xunna.hashnode.dev/building-a-music-app-with-nodejs
+
+ on similiar game mechanics:
+
+ quizzes: 
+ https://medium.com/%40frontendqueens/building-a-quiz-app-in-react-a-beginners-guide-200e07d41e17
+ https://dev.to/oyegoke/state-control-in-react-behind-the-scenes-of-our-quiz-app-4acd
+ https://www.geeksforgeeks.org/reactjs/create-a-quiz-app-using-react-hooks-and-timer-based-state-management/
+
+ dating sim/visual novel games:
+ (not too useful now but addresses dynamic routing with images)
+ https://progosling.com/en/blog/one-step-in-high-school
+ (interesting)
+ https://react.narraleaf.com/documentation/basic/create-scene

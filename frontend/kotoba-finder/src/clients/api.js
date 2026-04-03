@@ -39,8 +39,7 @@ export const roomAPI = {
   }
 }
 
-// get test route for vocab : test route /vocab/test
-// vobab userid (Jimmy : 69cbe3abb03793bb77a07ea1)
+
 
 export const vocabClient = axios.create({
 
@@ -53,11 +52,6 @@ export const vocabClient = axios.create({
 console.log("grabbing learned vocab"))
 
 
-
-
-// javascript.info/object-methods
-// https://www.geeksforgeeks.org/javascript/objects-in-javascript/
-// https://medium.com/@sandeep.h.hullatti/javascript-normal-function-versus-arrow-function-in-simple-way-281e70ef9a21
 
 // export const itemClient = axios.create({
 

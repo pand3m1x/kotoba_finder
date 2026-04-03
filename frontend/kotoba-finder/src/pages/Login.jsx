@@ -56,7 +56,7 @@ function Login(){
   }
 
   return(
-    <div className="loginForm" style={{ border:"2px solid green",
+    <div className="loginForm" style={{
                                         display:"flex",
                                         flexDirection:"column",
                                         alignItems:"center",
@@ -68,10 +68,10 @@ function Login(){
 
         <label htmlFor="email">Email</label>
         <input value={formData.email} onChange={handleChange} type="email" id="email" name="email" required />
-        {/* <input type="email" id="email" name="email" required/> */}
+        
         <br/><label htmlFor="password">Password</label>
         <input value={formData.password} onChange={handleChange} type="password" id="password" name="password" required />
-        {/* <input type="password" id="password" name="password" required/> */}
+      
         <br/><button type="submit">Login</button>
 
       </form>

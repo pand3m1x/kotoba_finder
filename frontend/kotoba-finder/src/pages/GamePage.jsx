@@ -5,7 +5,7 @@ import { roomAPI, vocabClient } from "../clients/api"
 import { useParams } from 'react-router-dom'
 
 // components
-import WordImage from '../components/WordImage' // just hating for some reason
+import WordImage from '../components/WordImage' // fixed lol
 
 // contexts
 import { useUser } from '../context/UserContext'
@@ -19,7 +19,6 @@ function GamePage() {
   
   const [ currentItemIndex, setCurrentItemIndex] = useState(0)
   const { id } = useParams();
-  //https://reactrouter.com/api/hooks/useParams
   
   //setting room and items for gamepage
   const [room,setRoom] = useState(null)
@@ -60,9 +59,7 @@ function GamePage() {
   }
 },[id])
 
-// for targeting the images (and make them rotate but always display the target Item)
-// https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript
-// https://coureywong.medium.com/how-to-shuffle-an-array-of-items-in-javascript-39b9efe4b567
+
 
 // to randomize images/array
 function shuffleImages(array){
@@ -145,10 +142,9 @@ return newArray;
           }
         }
 
-        // const nextItemIndex = currentItemIndex+1
+
         setCurrentItemIndex((prev) => prev + 1)
-        // currentItemIndex++
-        // setTargetItem(items[nextItemIndex])
+
         return alert("Good Job!")
 
 
@@ -161,9 +157,7 @@ return newArray;
       }
     }
     
-  // function determineTargetItem(){
 
-  // }
   //character tells player what item to find: (currently set to start of array)
   useEffect(()=>{
 
@@ -173,19 +167,6 @@ return newArray;
       }
 
   }, [ items, currentItemIndex ])
-  
-
-
-  
-
-  // useState for saved/known vocab to update for login, pull from DB once at start of game
-  // everyone is using using State Variables to "store" information locally instead of local storage
-  // state Variable for non-signed in users would push to local storage
-  // look new note/notes app jades code look at how we rerendered notes instead of constant pulls from database
-
-  //persisting storage
-  //https://medium.com/@roman_j/mastering-state-persistence-with-local-storage-in-react-a-complete-guide-1cf3f56ab15c
-  // https://blog.logrocket.com/using-localstorage-react-hooks/
   
 
   // load saved
@@ -204,13 +185,11 @@ return newArray;
     console.log("Hey we learned that:",knownVocab)
   }, [knownVocab])
 
-  // JSON.parse(localStorage.getItem("vocab")).includes(item.item_eng) ? item.item_eng : "???"
+
 
   console.log(currentItemIndex)
   return (
     <div>
-        <h2>Game Page</h2>
-
         {/* Whole game play area(character room render vocab images) */}
       <div className="gameArea" style={{display:"flex", 
                                        justifyContent:"center", 
@@ -219,13 +198,19 @@ return newArray;
                                        maxWidth: "80%"}}>
 
         {/* Character div with hint box, image, name */}
-        <div className="character" style={{ border:"2px solid lightBlue", 
+        <div className="character" style={{ backgroundColor:"rgba(196, 155, 200, 0.75)", 
+                                            borderRadius:"10px",
                                             display: "flex",
                                             flexDirection: "column",
                                             alignItems: "center",
                                             width: "40%"}}>
 
-          <div className="hintBox" style={{border:"2px solid green"}}>
+          <div className="hintBox" style={{border:"2px solid rgba(182, 135, 186, 0.75)",
+                                           borderRadius:"10px",
+                                           backgroundColor:"rgba(239, 212, 242, 0.75)",
+                                           margin:"20px",
+                                           padding:"10px"
+          }}>
             <p> {targetItem? `Help me find the ${targetItem.item_eng}` : "Hmmmm"}
             </p> {/* Call random items */}
           </div>
@@ -247,12 +232,12 @@ return newArray;
             <h2>{room?.room_name}</h2>  {/* Call Room*/}
 
           {/* This is what is connected to the api */}
-          <div className="roomInfo" style={{ border: "2px solid orange", 
+          <div className="roomInfo" style={{ 
                                              display: "flex", 
                                              justifyContent: "space-around"}} >
                   
                   {/* the actual room render */}
-              <div className="roomRender" style={{ border: "2px solid white",
+              <div className="roomRender" style={{ 
                                                    maxWidth: "70%",
                                                    minWidth: "70%",
                                                    display: "flex",
@@ -264,7 +249,11 @@ return newArray;
               </div>
 
                 {/* check list for items, populates room items */}
-              <div className="items" style={{ border: "2px solid red"}}>
+              <div className="items" style={{ border: "2px solid rgba(101, 100, 100, 0.75)",
+                                              backgroundColor:"rgba(176, 176, 176, 0.75)",
+                                              borderRadius: "10px",
+                                              padding:"5px",
+                                              maxHeight:"200px"}}>
                 <p>Item Check List:</p> 
                   <ul>
                     {items.map((item)=> <li key={item._id} 
@@ -283,9 +272,10 @@ return newArray;
           </div>
 
           {/* items populate, one correct item */}
-          <div className="roomItems" style={{ border: "2px solid green", 
+          <div className="roomItems" style={{ 
                                               display: "flex", 
-                                              justifyContent: "space-around" }} >
+                                              justifyContent: "space-around",
+                                              margin:"5px" }} >
 
           {playerChoices.map((item) => <WordImage key={item._id} 
                                                      item={item} 
@@ -299,39 +289,3 @@ return newArray;
 }
 
 export default GamePage
-
-// {items.splice(2,2).map((item) => <img src={item?.item_image} alt="Coffee table" style={{ maxWidth:"25%"}}/>)}
-//Nesting API information:
-
-//https://www.moesif.com/blog/technical/api-design/REST-API-Design-Best-Practices-for-Sub-and-Nested-Resources/
-//https://stackoverflow.com/questions/20951419/what-are-best-practices-for-rest-nested-resources
-//https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/
-
-
-// For conditional rendering:
-
-//https://react.dev/learn/conditional-rendering
-
-// when to use parenthesis()
- //https://javascript.plainenglish.io/curly-braces-versus-parenthesis-in-reactjs-4d3ffd33128f 
-
-
-
-// Old Data/Code Graveyard :
-    // //  fetch(`${import.meta.env.VITE_BASE_URL}/api/rooms/69cae83de20491b659e2d66f/items`)
-    // //  .then(response => response.json())
-    // //  .then(data => {
-    // //    console.log(data)
-    // //    setRoom(data.room)
-    // //    setItems(data)
-    //     })
-    //     .catch(error => console.error('Error fetching items:', error))
-    //   // const { data } = await roomClient.get('/69cae83de20491b659e2d66f') // /:id
-    //   // const { data } = await roomClient.get('/69cae83de20491b659e2d66f/items')
-    //   // console.log(data)
-    //   // setRoom(data.room)
-    //   // setItems(data)
-
-                {/* <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
-            <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/>
-            <img src={coffeeTableIcon} alt="Coffee table" style={{ maxWidth:"25%"}}/> */}

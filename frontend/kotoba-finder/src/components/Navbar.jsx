@@ -7,13 +7,15 @@ function Navbar(){
 
   return(
     <>
-      <nav id="Nav" style={{border:"2px solid red",
+      <nav id="Nav" style={{border:"2px solid rgba(91, 0, 85, 0.75)",
+                    backgroundColor:"rgba(108, 1, 101, 0.75)",
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
                     alignItems: "center",
                     padding:"5px",
-                    margin:"5px",}}>
+                    margin:"5px",
+                    color:"white"}}>
 
        <li  style={{listStyle:"none", }}>
          <Link to="/"><b>Kotoba Finder</b>🔍</Link>

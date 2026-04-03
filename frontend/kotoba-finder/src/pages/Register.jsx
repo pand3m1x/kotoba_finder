@@ -56,7 +56,7 @@ function Register() {
   }
 
   return(
-    <div className="registerForm" style={{ border:"2px solid green",
+    <div className="registerForm" style={{
                                         display:"flex",
                                         flexDirection:"column",
                                         alignItems:"center",
@@ -66,15 +66,14 @@ function Register() {
 
         <label htmlFor="username">Username</label>
         <input value={formData.username} onChange={handleChange} type="text" id="username" name="username" required/><br/>
-        {/* <input type="text" id="userName" name="userName" required /><br/> */}
+        
 
         <label htmlFor="email">Email</label>
         <input value={formData.email} onChange={handleChange} type="email" id="email" name="email" required />
-        {/* <input type="email" id="email" name="email" required/> */}
-
+   
         <br/><label htmlFor="password">Password</label>
         <input value={formData.password} onChange={handleChange} type="password" id="password" name="password" required />
-        {/* <input type="password" id="password" name="password" required/> */}
+      
         <br/><button type="submit">Register</button>
 
       </form>
