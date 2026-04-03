@@ -1,6 +1,7 @@
 import {useState,useEffect} from 'react'
 import { vocabClient } from '../clients/api'
 
+
 function Vocab() {
 
   const [vocab,setVocab] = useState([])
@@ -10,8 +11,9 @@ function Vocab() {
      async function getData() {
        
       try {
-      const { data } = await vocabClient.get('/69cbe3abb03793bb77a07ea1') // /:id
+      const { data } = await vocabClient.get(`${user_id}`) // /:id
       console.log(data)
+      
       
       setVocab(data)
 
@@ -21,12 +23,18 @@ function Vocab() {
       }
     }
     
-  
     
       getData();  
       
     },[])
+    // no cards founds
+    // if (!vocab ||vocab.length === 0){
+    //     console.log("Looking for vocab, but none found")
+    //     return ( <p>No vocab found. Have you played the game yet? <br/> 
+    //     <a href="/room/69cae83de20491b659e2d66f" >Kotoba Finder</a></p>)
+    //   }
 
+    //the buttons to increment and decrement the index of the vocab array, with wrap around
     function decrement(){
 
       index>0? setIndex(index-1):setIndex(vocab.length -1)
@@ -37,7 +45,9 @@ function Vocab() {
       index+1 == vocab.length ? setIndex(0):setIndex(index+1)
 
     }
-    
+
+
+  
   return(
     <div>
       <h1>Vocab Deck</h1>
@@ -45,8 +55,6 @@ function Vocab() {
                                           minWidth:"80%"}}>
         <div className="cardArea" style={{boder:"2px solid green",
                                           }}>
-          <p>Cards with vocab be here</p>
-
         </div>
         <div className="controlArea">
           <div className="infoTop" style={{border:"2px solid yellow",
@@ -55,19 +63,24 @@ function Vocab() {
                                           alignItems:"center"}}>
           
             <div className="card" style={{border:"2px solid red",
+                                          borderRadius:"10px",
                                           backgroundColor:"tan",
-                                          maxWidth:"400px"}}>
+                                          width:"400px",
+                                          height:"200px",
+                                          display:"flex",
+                                          flexDirection:"column",
+                                          alignItems:"center"}}>
 
-              {vocab.slice(index,index+1).map((word)=>{
-              const { item } = word  
-              return <div key={word._id} style={{border:"2px solid lightBlue",
-                                                          display:"flex",
-                                                          flexDirection:"column",
-                                                          alignItems:"center"}}>
-              <p>{item.item_eng}</p>
-              <img src={item.item_image} style={{maxWidth:"30%"}}/>
-              <p>description</p>
-              </div>})}
+              {vocab.length === 0 ? (<p>No vocab found</p>) :
+              (vocab.slice(index,index+1).map((word)=>{
+                const { item } = word  
+                return <div key={word._id} style={{border:"2px solid lightBlue",
+                                                  }}>
+                          <p>{item.item_eng}</p>
+                          <img src={item.item_image} style={{maxWidth:"30%"}}/>
+                          <p>description</p>
+                        </div>}))
+              }
 
             </div>
           </div>
