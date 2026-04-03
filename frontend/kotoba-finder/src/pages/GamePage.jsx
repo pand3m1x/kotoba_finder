@@ -5,7 +5,7 @@ import { roomAPI, vocabClient } from "../clients/api"
 import { useParams } from 'react-router-dom'
 
 // components
-import WordImage from '../components/wordImage' // just hating for some reason
+import WordImage from '../components/WordImage' // just hating for some reason
 
 // contexts
 import { useUser } from '../context/UserContext'
