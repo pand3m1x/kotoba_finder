@@ -106,6 +106,11 @@ return newArray;
         //this is where found items live (making an array of found items :) )
         setFoundItems((prev) => [...prev, item._id])
         
+        setKnownVocab((prev) => {
+          if (prev.includes(item.item_eng)) 
+            return prev
+          return [...prev, item.item_eng]
+        })
         // const nextItemIndex = currentItemIndex+1
         setCurrentItemIndex((prev) => prev + 1)
         // currentItemIndex++
@@ -143,7 +148,29 @@ return newArray;
   // everyone is using using State Variables to "store" information locally instead of local storage
   // state Variable for non-signed in users would push to local storage
   // look new note/notes app jades code look at how we rerendered notes instead of constant pulls from database
-  const [ knownVocab, setKnownVocab ] = useState(null)
+
+  //persisting storage
+  //https://medium.com/@roman_j/mastering-state-persistence-with-local-storage-in-react-a-complete-guide-1cf3f56ab15c
+  // https://blog.logrocket.com/using-localstorage-react-hooks/
+  
+  const [ knownVocab, setKnownVocab ] = useState([])
+
+  // load saved
+  useEffect(() => {
+
+    const storedVocab = localStorage.getItem("knownVocab")
+    if (storedVocab) {
+      setKnownVocab(JSON.parse(storedVocab))
+    }
+    console.log("last game:", storedVocab)
+  }, [])
+
+  // save to
+  useEffect(() => {
+    localStorage.setItem("knownVocab", JSON.stringify(knownVocab))
+    console.log("Hey remember:",knownVocab)
+  }, [knownVocab])
+
   // JSON.parse(localStorage.getItem("vocab")).includes(item.item_eng) ? item.item_eng : "???"
 
   console.log(currentItemIndex)

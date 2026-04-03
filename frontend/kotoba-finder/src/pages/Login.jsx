@@ -1,34 +1,58 @@
-// import { useState } from "react";
-// // import { userClient } from "../clients/api"
-// import { useUser } from "../context/UserContext"
-// import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { userClient } from "../clients/api"
+import { useUser } from "../context/UserContext"
+import { useNavigate } from "react-router-dom";
 
 function Login(){
   
-  // const { setUser } = useUser()
+  const { setUser } = useUser()
 
-  // const navigate = useNavigate()
-  // // const value = useUser()
-  // // console.log (value)
+  const navigate = useNavigate()
+  // const value = useUser()
+  // console.log (value)
 
-  // const [formData, setFormData] = useState({
-  //   email: '',
-  //   password: ''
-  // })
+  const [formData, setFormData] = useState({
+    userName: '',
+    password: ''
+  })
 
-  //  const handleChange = (e) =>{
-  //     setFormData({
-  //       ...formData,
-  //       [e.target.name]: e.target.value // [] makes it dynamic instead of listing each input individually
-  //     })
-  // }
+   const handleChange = (e) =>{
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value // [] makes it dynamic instead of listing each input individually
+      })
+  }
 
-  // const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
 
-  //   e.preventDefault()
-  //   console.log(formData)
+    e.preventDefault()
+    console.log(formData)
 
-  // }
+     try {
+
+      const { data } = await userClient.post('/login', formData) // response.data also works: where the Response has other properties (like the HTTP code, error information etc)
+      console.log(data)
+
+      // take the token and store it locally
+  
+        localStorage.setItem("token", data.token) //or response.data.token
+        
+      // save some user data in our state
+  
+      setUser(data.user)
+        
+      // take the user to a different page
+
+      navigate('/')
+
+    } catch (err) {
+
+        console.log(err)
+        alert(err.message)
+
+    }
+  
+  }
 
   return(
     <div className="loginForm" style={{ border:"2px solid green",
@@ -37,16 +61,16 @@ function Login(){
                                         alignItems:"center",
                                         padding:"10px" }}>
       <h1>Login</h1>
-      <form> {/* onSubmit={handleSubmit} */}
+      <form onSubmit={handleSubmit}>
         <label htmlFor="userName">User Name</label>
-        <input type="text" id="userName" name="userName" required /><br/>
+        <input value={formData.userName} onChange={handleChange} type="text" id="userName" name="userName" required /><br/>
 
-        <label htmlFor="email">Email</label>
+        {/* <label htmlFor="email">Email</label> */}
         {/* <input value={formData.email} onChange={handleChange} type="email" id="email" name="email" required /> */}
-        <input type="email" id="email" name="email" required/>
+        {/* <input type="email" id="email" name="email" required/> */}
         <br/><label htmlFor="password">Password</label>
-        {/* <input value={formData.password} onChange={handleChange} type="password" id="password" name="password" required /> */}
-        <input type="password" id="password" name="password" required/>
+        <input value={formData.password} onChange={handleChange} type="password" id="password" name="password" required />
+        {/* <input type="password" id="password" name="password" required/> */}
         <br/><button type="submit">Login</button>
 
       </form>
