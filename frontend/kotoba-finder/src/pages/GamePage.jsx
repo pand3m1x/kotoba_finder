@@ -279,7 +279,7 @@ return newArray;
 
           {playerChoices.map((item) => <WordImage key={item._id} 
                                                      item={item} 
-                                                     onClick={()=>handleItemClick(item)} /> )}
+                                                     handleItemClick={handleItemClick} /> )}
 
           </div> 
         </div>

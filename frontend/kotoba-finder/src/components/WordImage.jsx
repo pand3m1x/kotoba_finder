@@ -3,7 +3,7 @@
 
 function WordImage({ handleItemClick, item }){
 
-  function clickImage(){handleItemClick(item._id)}
+  function clickImage(){handleItemClick(item)}
  
   return(
     <>
