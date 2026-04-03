@@ -74,7 +74,7 @@ function Vocab() {
                                           borderRadius:"10px",
                                           backgroundColor:"tan",
                                           width:"400px",
-                                          height:"200px",
+                                          height:"40%",
                                           display:"flex",
                                           flexDirection:"column",
                                           alignItems:"center"}}>
