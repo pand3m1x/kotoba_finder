@@ -1,5 +1,4 @@
-import { Link,useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useUser } from "../context/UserContext"
 
 function Navbar(){
@@ -21,7 +20,7 @@ function Navbar(){
             <>
               <li><Link to="/vocab">Vocab Deck</Link></li> 
               {"|"}
-              <li><Link to="/logout">Logout</Link></li>
+              <li onClick={logout}><Link to="/login">Logout</Link></li>
             </>
             :
             <>
