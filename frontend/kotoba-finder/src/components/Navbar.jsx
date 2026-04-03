@@ -10,13 +10,15 @@ function Navbar(){
       <nav id="Nav" style={{border:"2px solid red",
                     display: "flex",
                     flexDirection: "row",
-                    justifyContent: "space-around",
+                    justifyContent: "space-between",
                     alignItems: "center",
-                    padding:"5px"
-      }}>
+                    padding:"5px",
+                    margin:"5px",}}>
+
        <li  style={{listStyle:"none", }}>
          <Link to="/"><b>Kotoba Finder</b></Link>
        </li>
+       
        {user && <p>こんにちは {user.username} </p>}
 
         <ul style={{listStyle:"none", 
@@ -24,7 +26,8 @@ function Navbar(){
                     flexDirection: "row",
                     justifyContent: "space-around",
                     alignItems: "center",
-                    padding:"5px"}}>
+                    padding:"5px",
+                    gap:"40px"}}>
           {user ? 
             <>
               <li><Link to="/vocab">Vocab Deck</Link></li> 
