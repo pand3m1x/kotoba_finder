@@ -14,6 +14,9 @@ function Navbar(){
                     alignItems: "center",
                     padding:"5px"
       }}>
+       <li  style={{listStyle:"none", }}>
+         <Link to="/"><b>Kotoba Finder</b></Link>
+       </li>
        {user && <p>こんにちは {user.username} </p>}
 
         <ul style={{listStyle:"none", 
