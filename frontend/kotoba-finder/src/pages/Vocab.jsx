@@ -18,9 +18,9 @@ function Vocab() {
         if (!user._id) return
         
         const { data } = await vocabClient.get(`/${user._id}`) // /:id
-        console.log(user._id)
+        console.log(data)
         
-        if (!vocab ||vocab.length === 0){
+        if (data.length === 0){
            console.log("Looking for vocab, but none found")}
 
       setVocab(data)
@@ -51,7 +51,7 @@ function Vocab() {
     function increment(){
 
       index+1 == vocab.length ? setIndex(0):setIndex(index+1)
-
+      // console.log(vocab.length, index)
     }
 
 

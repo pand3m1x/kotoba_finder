@@ -44,8 +44,11 @@ export const roomAPI = {
 
 export const vocabClient = axios.create({
 
-  baseURL: `${BASE_URL}/api/vocab/test`, //temperate literal
-  
+  baseURL: `${BASE_URL}/api/vocab`, //temperate literal
+  // baseURL: `${BASE_URL}/api/vocab/test`, //temperate literal
+  headers: {
+        Authorization: `Bearer ${token()}`
+      }  
 },
 console.log("grabbing learned vocab"))
 

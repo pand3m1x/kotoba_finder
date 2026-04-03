@@ -1,10 +1,17 @@
 
-import characterIcon from '../assets/characters/Velma.svg'
-
+//react
 import { useEffect,useState } from 'react'
-import { roomAPI } from "../clients/api"
+import { roomAPI, vocabClient } from "../clients/api"
 import { useParams } from 'react-router-dom'
+
+// components
 import WordImage from '../components/wordImage' // just hating for some reason
+
+// contexts
+import { useUser } from '../context/UserContext'
+
+// imagery
+import characterIcon from '../assets/characters/Velma.svg'
 
 // let currentItemIndex = 0
 
@@ -24,6 +31,12 @@ function GamePage() {
   
   // player makes choice from array of images
   const [playerChoices, setPlayerChoices] = useState([])
+  
+  // for player (user/guest) to update tracked vocab
+  const [ knownVocab, setKnownVocab ] = useState([])
+
+  //user context 
+  const { user,setUser } = useUser()
 
   // bring in client to populate stuff 
   useEffect(()=>{
@@ -88,8 +101,9 @@ return newArray;
     setPlayerChoices(mixedPlayerChoices) 
   }, [ targetItem, items ])
 
-  // the event listener for the image clicked
-  function handleItemClick(item){
+
+  // ## the event listener for the image clicked ## 
+  async function handleItemClick(item){
       console.log("Clicked me!", item) // this is where we check out conditional anything to do with checking if correct image/word, check box is checked, and useState for render is changed
 
        // if no item
@@ -103,14 +117,34 @@ return newArray;
       if (item._id === targetItem._id) {
         console.log("that is the target item!",targetItem.item_eng)
         
-        //this is where found items live (making an array of found items :) )
+        //this is where found items live, saving progress of session
         setFoundItems((prev) => [...prev, item._id])
         
+        //from previous sessions, found items
         setKnownVocab((prev) => {
           if (prev.includes(item.item_eng)) 
             return prev
           return [...prev, item.item_eng]
         })
+
+        // backend API call to push vocab
+        if(user) {
+          try{
+            const { data } = await vocabClient.post('/',
+              { userId: user._id,
+                itemId: item._id
+              })
+
+              console.log(user)
+              setUser(data)
+
+          } catch(err) { 
+
+            console.log("error saving vocab:", err.message)
+
+          }
+        }
+
         // const nextItemIndex = currentItemIndex+1
         setCurrentItemIndex((prev) => prev + 1)
         // currentItemIndex++
@@ -153,7 +187,6 @@ return newArray;
   //https://medium.com/@roman_j/mastering-state-persistence-with-local-storage-in-react-a-complete-guide-1cf3f56ab15c
   // https://blog.logrocket.com/using-localstorage-react-hooks/
   
-  const [ knownVocab, setKnownVocab ] = useState([])
 
   // load saved
   useEffect(() => {
@@ -168,7 +201,7 @@ return newArray;
   // save to
   useEffect(() => {
     localStorage.setItem("knownVocab", JSON.stringify(knownVocab))
-    console.log("Hey we remember that:",knownVocab)
+    console.log("Hey we learned that:",knownVocab)
   }, [knownVocab])
 
   // JSON.parse(localStorage.getItem("vocab")).includes(item.item_eng) ? item.item_eng : "???"
