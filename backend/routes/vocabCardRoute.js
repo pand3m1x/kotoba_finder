@@ -4,9 +4,10 @@ const router = express.Router();
 
 // import item from '../models/items.js'
 import User from '../models/user.js';
-// import { authMiddleware } from '../utils/auth.js'
+import { authMiddleware } from '../utils/auth.js'
 
-// router.use(authMiddleware)
+
+router.use(authMiddleware)
 // // updates unlocked vocab as user progresses , this is for full version with use auth
 // router.post('/', async (req,res) =>{
 
@@ -35,22 +36,26 @@ import User from '../models/user.js';
 //   }
 // });
 
+
 // test route /vocab/test
-router.post('/test', async (req,res) =>{
+// router.post('/test', async (req,res) =>{
+router.post('/', async (req,res) =>{
 
   console.log("test route hit")
   try{
 
     const { userId, itemId } = req.body;
 
-    const user = await User.findById(userId);
+    const user = await User.findById(userId)
 
-    user.vocab.push({ item: itemId })
+    // user.vocab.push({ item: itemId })
 
-    await user.save()
+    // await user.save()
 
     const vocabExists = user.vocab.some(
-      (entry) => entry.item.toString() === itemId
+      (entry) => {
+        console.log(entry.item.toString())
+        return entry.item.toString() === itemId}
     )
     
     if (!vocabExists){
@@ -78,6 +83,7 @@ router.post('/test', async (req,res) =>{
 //     "itemId" : "69cae25140d846fed9aaa6f0"
 // }
 
+
 // // gets all vocab for user
 // router.get('/:id', async (req,res) => {
 
@@ -97,8 +103,10 @@ router.post('/test', async (req,res) =>{
 //   }
 // });
 
+
 // // test route for getting by user words //accidently added room data, but something to think about for vocab card
-router.get('/test/:id', async (req,res) => {
+// router.get('/test/:id', async (req,res) => {
+router.get('/:id', async (req,res) => {
 
   try{
     const user = await User.findById(req.params.id)
