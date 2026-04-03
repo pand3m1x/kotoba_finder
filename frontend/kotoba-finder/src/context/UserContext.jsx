@@ -13,7 +13,7 @@ function UserProvider({ children }) {
 
   // set the initial state to null or temporary user
 
-  const [ user, setUser] = useState(null)
+  const [ user, setUser] = useState(initialUser)
   const navigate = useNavigate()
   
 //useEffect that verifies the token and retrieves User Data

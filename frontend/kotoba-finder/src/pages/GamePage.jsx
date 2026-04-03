@@ -162,13 +162,13 @@ return newArray;
     if (storedVocab) {
       setKnownVocab(JSON.parse(storedVocab))
     }
-    console.log("last game:", storedVocab)
+    console.log("last game we:", storedVocab)
   }, [])
 
   // save to
   useEffect(() => {
     localStorage.setItem("knownVocab", JSON.stringify(knownVocab))
-    console.log("Hey remember:",knownVocab)
+    console.log("Hey we remember that:",knownVocab)
   }, [knownVocab])
 
   // JSON.parse(localStorage.getItem("vocab")).includes(item.item_eng) ? item.item_eng : "???"

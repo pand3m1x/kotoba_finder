@@ -13,6 +13,7 @@ function Login(){
 
   const [formData, setFormData] = useState({
     userName: '',
+    email: '',
     password: ''
   })
 
@@ -65,8 +66,8 @@ function Login(){
         <label htmlFor="userName">User Name</label>
         <input value={formData.userName} onChange={handleChange} type="text" id="userName" name="userName" required /><br/>
 
-        {/* <label htmlFor="email">Email</label> */}
-        {/* <input value={formData.email} onChange={handleChange} type="email" id="email" name="email" required /> */}
+        <label htmlFor="email">Email</label>
+        <input value={formData.email} onChange={handleChange} type="email" id="email" name="email" required />
         {/* <input type="email" id="email" name="email" required/> */}
         <br/><label htmlFor="password">Password</label>
         <input value={formData.password} onChange={handleChange} type="password" id="password" name="password" required />
