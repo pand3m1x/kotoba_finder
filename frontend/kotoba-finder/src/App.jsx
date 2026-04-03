@@ -22,20 +22,20 @@ function App() {
   return (
     <>
       <Navbar />
-      {user ? (
+      {user ? 
         <Routes>
           <Route path="/vocab" element={<Vocab />} />
           <Route path="/" element={<Navigate to="/room/69cae83de20491b659e2d66f" />} />
           <Route path="/room/:id" element={<GamePage />} />
         </Routes> 
-       ) : (
+        : 
       <Routes>
           <Route path="/" element={<Navigate to="/room/69cae83de20491b659e2d66f" />} />
           <Route path="/room/:id" element={<GamePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
       </Routes>
-      )}
+      }
     </>
   )
 }

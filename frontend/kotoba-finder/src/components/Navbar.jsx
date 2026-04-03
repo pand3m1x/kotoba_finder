@@ -7,7 +7,13 @@ function Navbar(){
 
   return(
     <>
-      <nav id="Nav" style={{border:"2px solid red",}}>
+      <nav id="Nav" style={{border:"2px solid red",
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-around",
+                    alignItems: "center",
+                    padding:"5px"
+      }}>
        {user && <p>こんにちは {user.username} </p>}
 
         <ul style={{listStyle:"none", 
