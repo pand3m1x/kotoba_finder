@@ -1,4 +1,5 @@
 import {useState,useEffect} from 'react'
+import { useUser } from '../context/UserContext'
 import { vocabClient } from '../clients/api'
 
 
@@ -7,14 +8,21 @@ function Vocab() {
   const [vocab,setVocab] = useState([])
   const [index,setIndex] = useState(0)
 
+  const { user } = useUser()
+
   useEffect(()=>{
      async function getData() {
        
       try {
-      const { data } = await vocabClient.get(`${user_id}`) // /:id
-      console.log(data)
-      
-      
+        
+        if (!user._id) return
+        
+        const { data } = await vocabClient.get(`/${user._id}`) // /:id
+        console.log(user._id)
+        
+        if (!vocab ||vocab.length === 0){
+           console.log("Looking for vocab, but none found")}
+
       setVocab(data)
 
       } catch(err) {
@@ -26,7 +34,7 @@ function Vocab() {
     
       getData();  
       
-    },[])
+    },[user])
     // no cards founds
     // if (!vocab ||vocab.length === 0){
     //     console.log("Looking for vocab, but none found")
