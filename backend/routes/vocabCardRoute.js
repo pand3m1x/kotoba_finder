@@ -48,8 +48,20 @@ router.post('/test', async (req,res) =>{
     user.vocab.push({ item: itemId })
 
     await user.save()
+
+    const vocabExists = user.vocab.some(
+      (entry) => entry.item.toString() === itemId
+    )
     
-    console.log("success!", itemId)
+    if (!vocabExists){
+      user.vocab.push({ item:itemId })
+      console.log("success! vocab added", itemId)
+
+      await user.save()
+    } else {
+      console.log("duplicate avoided", itemId)
+    }
+    
     return res.json(user);
 
   } catch(err) {
@@ -59,6 +71,12 @@ router.post('/test', async (req,res) =>{
 
   }
 });
+
+// for testing item adding for test:
+// {
+//     "userId" : "69cf12fda7d6a1902dc305b8",
+//     "itemId" : "69cae25140d846fed9aaa6f0"
+// }
 
 // // gets all vocab for user
 // router.get('/:id', async (req,res) => {
