@@ -64,13 +64,13 @@ function Login(){
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="userName">User Name</label>
-        <input value={formData.userName} onChange={handleChange} type="text" id="userName" name="userName" required /><br/>
+        <input value={formData.userName} onChange={handleChange} type="text" id="userName" name="userName" placeholder="Your cool username here!" required /><br/>
 
         <label htmlFor="email">Email</label>
-        <input value={formData.email} onChange={handleChange} type="email" id="email" name="email" required />
+        <input value={formData.email} onChange={handleChange} type="email" id="email" name="email" placeholder="The email you used to signup!" required />
         
         <br/><label htmlFor="password">Password</label>
-        <input value={formData.password} onChange={handleChange} type="password" id="password" name="password" required />
+        <input value={formData.password} onChange={handleChange} type="password" id="password" name="password" placeholder="Your secret password!" required />
       
         <br/><button type="submit">Login</button>
 
