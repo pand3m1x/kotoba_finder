@@ -64,17 +64,17 @@ function Register() {
       <h1>Register</h1>
       <form onSubmit={handleSubmit}>
 
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">Username・ユーザー名</label>
         <input value={formData.username} onChange={handleChange} type="text" id="username" name="username" placeholder="Something like Cool_User!" required/><br/>
         
 
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email・メール</label>
         <input value={formData.email} onChange={handleChange} type="email" id="email" name="email" placeholder="Whatever email you use for games" required />
    
-        <br/><label htmlFor="password">Password</label>
+        <br/><label htmlFor="password">Password・パスワード</label>
         <input value={formData.password} onChange={handleChange} type="password" id="password" name="password" placeholder="Something secret, and at least 5 characters" required />
       
-        <br/><button type="submit">Register</button>
+        <br/><button type="submit">Register・登録する</button>
 
       </form>
     </div>

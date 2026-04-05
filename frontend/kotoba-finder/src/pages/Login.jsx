@@ -61,18 +61,18 @@ function Login(){
                                         flexDirection:"column",
                                         alignItems:"center",
                                         padding:"10px" }}>
-      <h1>Login</h1>
+      <h1>Login・ログイン</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="userName">User Name</label>
+        <label htmlFor="userName">User Name・ユーザー名</label>
         <input value={formData.userName} onChange={handleChange} type="text" id="userName" name="userName" placeholder="Your cool username here!" required /><br/>
 
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email・メール</label>
         <input value={formData.email} onChange={handleChange} type="email" id="email" name="email" placeholder="The email you used to signup!" required />
         
-        <br/><label htmlFor="password">Password</label>
+        <br/><label htmlFor="password">Password・パスワード</label>
         <input value={formData.password} onChange={handleChange} type="password" id="password" name="password" placeholder="Your secret password!" required />
       
-        <br/><button type="submit">Login</button>
+        <br/><button type="submit">Login・ログインする</button>
 
       </form>
     </div>

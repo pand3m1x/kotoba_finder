@@ -1,3 +1,9 @@
+.monomaniac-one-regular {
+  font-family: "Monomaniac One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 html, body {
   height: 100%;
   margin: 0;
@@ -10,6 +16,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed; 
   color: hsl(260, 100%, 13%);
+  font-family: "Monomaniac One", sans-serif;
 }
 
 button {
