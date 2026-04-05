@@ -121,3 +121,6 @@ function Vocab() {
 }
 
 export default Vocab
+
+// add shadow and other elements to card deck: 
+// boxShadow: "0 4px 10px rgba(82, 74, 80, 0.4)",

@@ -11,10 +11,13 @@ function WordImage({ handleItemClick, item }){
                                                 
                                                 src={item?.item_image} 
                                                 alt={item.item_eng} 
-                                                style={{ maxWidth:"25%",
+                                                style={{ 
+                                                         maxWidth:"25%",
                                                          margin: "-5px",
                                                          cursor: "pointer" }} />
     </>
   );
 }
 export default WordImage
+
+// add shadow and circle border

@@ -188,6 +188,7 @@ return newArray;
 
 
   console.log(currentItemIndex)
+
   return (
     <div>
         {/* Whole game play area(character room render vocab images) */}
@@ -198,7 +199,8 @@ return newArray;
                                        maxWidth: "80%"}}>
 
         {/* Character div with hint box, image, name */}
-        <div className="character" style={{ backgroundColor:"rgba(196, 155, 200, 0.75)", 
+        <div className="character" style={{ backgroundColor:"rgba(196, 155, 200, 0.75)",
+                                            boxShadow: "0 4px 10px rgba(149, 64, 128, 0.4)", 
                                             borderRadius:"10px",
                                             display: "flex",
                                             flexDirection: "column",
@@ -208,6 +210,7 @@ return newArray;
           <div className="hintBox" style={{border:"2px solid rgba(182, 135, 186, 0.75)",
                                            borderRadius:"10px",
                                            backgroundColor:"rgba(239, 212, 242, 0.75)",
+                                           boxShadow: "0 4px 10px rgba(149, 64, 128, 0.4)",
                                            margin:"20px",
                                            padding:"10px"
           }}>
@@ -224,6 +227,7 @@ return newArray;
         <div className="gamePlay" style={{ border:"2px solid black", 
                                           borderRadius: "10px", 
                                           backgroundColor:"rgba(128, 128, 128, 0.75)",
+                                          boxShadow: "0 4px 10px rgba(149, 64, 128, 0.75)",
                                           maxWidth: "65%",
                                           display: "flex",
                                           flexDirection: "column",
@@ -251,6 +255,7 @@ return newArray;
                 {/* check list for items, populates room items */}
               <div className="items" style={{ border: "2px solid rgba(101, 100, 100, 0.75)",
                                               backgroundColor:"rgba(176, 176, 176, 0.75)",
+                                              boxShadow: "0 4px 10px rgba(82, 74, 80, 0.4)",
                                               borderRadius: "10px",
                                               padding:"5px",
                                               maxHeight:"200px"}}>
