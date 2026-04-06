@@ -209,7 +209,7 @@ return newArray;
 
           <div className="hintBox" style={{border:"2px solid rgba(182, 135, 186, 0.75)",
                                            borderRadius:"10px",
-                                           backgroundColor:"rgba(239, 212, 242, 0.75)",
+                                           backgroundColor:"rgba(255, 252, 234, 0.96)",
                                            boxShadow: "0 4px 10px rgba(149, 64, 128, 0.4)",
                                            margin:"20px",
                                            padding:"10px"
@@ -258,7 +258,7 @@ return newArray;
 
                 {/* check list for items, populates room items */}
               <div className="items" style={{ border: "2px solid rgba(101, 100, 100, 0.75)",
-                                              backgroundColor:"rgba(176, 176, 176, 0.75)",
+                                              backgroundColor:"rgba(160, 153, 159, 0.75)",
                                               boxShadow: "0 4px 10px rgba(82, 74, 80, 0.4)",
                                               borderRadius: "10px",
                                               padding:"10px",
@@ -288,7 +288,7 @@ return newArray;
                                               justifyContent: "space-around",
                                               margin:"5px" }} >
 
-          {playerChoices.map((item) => <WordImage key={item._id} 
+          {playerChoices.map((item) => <WordImage    key={item._id} 
                                                      item={item} 
                                                      handleItemClick={handleItemClick} /> )}
 

@@ -15,7 +15,6 @@ body {
   color: hsl(260, 100%, 13%);
   background-repeat: no-repeat;
   background-attachment: fixed; 
-  color: hsl(260, 100%, 13%);
   font-family: system-ui, sans-serif;
   font-size: 1rem;
   padding:10px;
@@ -23,6 +22,15 @@ body {
 
 h1, h2 {
   font-family: "Monomaniac One", sans-serif;
+}
+
+img {
+  filter: drop-shadow(0 4px 10px rgba(77, 30, 69, 0.664));
+}
+
+.clickImage{
+  border-radius: 50%;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
 }
 
 input[type="checkbox"] {

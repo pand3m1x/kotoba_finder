@@ -7,8 +7,8 @@ function WordImage({ handleItemClick, item }){
  
   return(
     <>
-     <img onClick={clickImage}
-                                                
+     <img                                       onClick={clickImage}
+                                                className="clickImage"
                                                 src={item?.item_image} 
                                                 alt={item.item_eng} 
                                                 style={{ 
