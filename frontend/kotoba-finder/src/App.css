@@ -23,6 +23,11 @@ body {
 h1, h2 {
   font-family: "Monomaniac One", sans-serif;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+  font-size:1.5rem;
+}
 
 img {
   filter: drop-shadow(0 4px 10px rgba(77, 30, 69, 0.664));
@@ -43,12 +48,25 @@ button {
   width:200px;
   height:50px;
   background-color: rgb(187, 119, 193);
-  border-color:rgb(140, 101, 137);
+  border: 2px solid rgb(148, 61, 119, 0.60);
+  /* border-color:rgb(140, 101, 137); */
+  border-radius: 20px;
+  padding: 5px;
+  transition: 0.3s ease, transform 0.2s;
+  cursor:pointer;
+  font-size: large;
+}
+
+button:hover {
+  background-color: rgb(134, 57, 134);
+  color: rgb(244, 234, 52);
+  transform: scale(1.10);
 }
 
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 12px;
 
   padding: 25px 30px;
@@ -63,4 +81,6 @@ form {
 input {
   width: 300px;
   height: 35px;
+  border-radius: 5px;
+  border: 2px solid rgba(148, 61, 119, 0.60);
 }

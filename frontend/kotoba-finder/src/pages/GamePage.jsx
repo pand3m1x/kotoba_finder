@@ -226,7 +226,7 @@ return newArray;
 
         <div className="gamePlay" style={{ border:"2px solid black", 
                                           borderRadius: "10px", 
-                                          backgroundColor:"rgba(128, 128, 128, 0.75)",
+                                          backgroundColor:"rgba(164, 152, 163, 0.75)",
                                           boxShadow: "0 4px 10px rgba(149, 64, 128, 0.75)",
                                           maxWidth: "65%",
                                           display: "flex",
@@ -244,11 +244,11 @@ return newArray;
                   
                   {/* the actual room render */}
               <div className="roomRender" style={{ 
-                                                   flex: 2,
-    maxWidth: "800px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems:"center"}} >
+                                                    flex: 2,
+                                                    maxWidth: "800px",
+                                                    display: "flex",
+                                                    flexDirection: "column",
+                                                    alignItems:"center"}} >
                 <p><i>identify the items in the room and add them to your checklist</i></p>
                 <img src={room?.room_image} alt="Isometric view of a cute and cozy living room" 
                                             style={{width:"70%",
@@ -258,7 +258,7 @@ return newArray;
 
                 {/* check list for items, populates room items */}
               <div className="items" style={{ border: "2px solid rgba(101, 100, 100, 0.75)",
-                                              backgroundColor:"rgba(160, 153, 159, 0.75)",
+                                              backgroundColor:"rgba(209, 205, 209, 0.75)",
                                               boxShadow: "0 4px 10px rgba(82, 74, 80, 0.4)",
                                               borderRadius: "10px",
                                               padding:"10px",

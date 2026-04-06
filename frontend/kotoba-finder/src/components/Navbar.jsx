@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useUser } from "../context/UserContext"
+import { useUser } from '../context/UserContext'
+import kotobaLogo from '../assets/Logo.svg'
 
 function Navbar(){
 
@@ -18,7 +19,7 @@ function Navbar(){
                     color:"white"}}>
 
        <li  style={{listStyle:"none", }}>
-         <Link to="/"><b>Kotoba Finder</b>🔍</Link>
+         <Link to="/"><img src={kotobaLogo} alt="kotoba finder logo" style={{ height: "80px", paddingLeft:"20px" }}/></Link>
        </li>
        
        {user && <p>こんにちは {user.username} </p>}
@@ -28,8 +29,9 @@ function Navbar(){
                     flexDirection: "row",
                     justifyContent: "space-around",
                     alignItems: "center",
-                    padding:"5px",
-                    gap:"40px"}}>
+                    paddingRight:"40px",
+                    gap:"40px",
+                    }}>
           {user ? 
             <>
               <li><Link to="/vocab">Vocab Deck</Link></li> 
@@ -38,8 +40,8 @@ function Navbar(){
             </>
             :
             <>
-              <li><Link to="/"><b>Kotoba Finder</b></Link></li>
-              {"|"}
+              {/* <li><Link to="/"><b>Kotoba Finder</b></Link></li>
+              {"|"} */}
               <li><Link to="/register">Register</Link></li>
               {"|"}
               <li><Link to="/login">Login</Link></li>
