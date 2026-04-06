@@ -7,35 +7,35 @@ Kotoba Finder is an interactive language-learning web application designed to he
 
 Learning a second language often presents a gap:
 
-  -Beginner materials are too simple and repetitive
-  -Authentic content is too advanced
+   • Beginner materials are too simple and repetitive
+   • Authentic content is too advanced
 
 Kotoba Finder addresses this by providing:
 
- -Level-appropriate vocabulary
- -Interactive, game-based learning
- -Visual context to reinforce meaning
- -Light narrative guidance through a character
+   • Level-appropriate vocabulary
+   • Interactive, game-based learning
+   • Visual context to reinforce meaning
+   • Light narrative guidance through a character
 
 This project reflects an interest in:
 
-  -storytelling as a learning tool
-  -second language acquisition principles
-  -game UX design for education
+   • storytelling as a learning tool
+   • second language acquisition principles
+   • game UX design for education
 
 Game Mechanics:
-  -Players enter a room/environment (e.g., kitchen, living room)
-  -A character provides a prompt (in target language)
-  -Players identify objects visually
-  -Correct selections are saved as vocabulary cards
-  -Progression unlocks new rooms/environments
+   • Players enter a room/environment (e.g., kitchen, living room)
+   • A character provides a prompt (in target language)
+   • Players identify objects visually
+   • Correct selections are saved as vocabulary cards
+   • Progression unlocks new rooms/environments
 
 
 Features: 
-  -MongoDB database with relational data
-  -User authentication (register/login)
-  -Room ↔ Item relationships via ObjectId
-  -User-specific vocabulary storage
+   • MongoDB database with relational data
+   • User authentication (register/login)
+   • Room ↔ Item relationships via ObjectId
+   • User-specific vocabulary storage
 
 ·˚ ༘༘⋆ˎˊ˗ ✧｡٩(ˊᗜˋ )و✧*｡ ·˚ ༘༘⋆ˎˊ˗
 
