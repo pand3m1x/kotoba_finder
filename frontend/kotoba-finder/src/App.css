@@ -9,14 +9,26 @@ html, body {
   margin: 0;
 }
 body {
-  height: 100vh;
+  min-height: 100vh;
   background-color: rgba(181, 116, 177, 0.5);
   background-image: linear-gradient(to bottom, rgb(241, 199, 242), rgba(123, 7, 98, 0.75));
   color: hsl(260, 100%, 13%);
   background-repeat: no-repeat;
   background-attachment: fixed; 
   color: hsl(260, 100%, 13%);
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  padding:10px;
+}
+
+h1, h2 {
   font-family: "Monomaniac One", sans-serif;
+}
+
+input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  margin: 10px
 }
 
 button {

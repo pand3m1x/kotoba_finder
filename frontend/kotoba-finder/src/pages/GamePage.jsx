@@ -232,24 +232,28 @@ return newArray;
                                           display: "flex",
                                           flexDirection: "column",
                                           alignItems: "center",
-                                          padding:"5px"}}>
+                                          padding:"5px",
+                                          margin:"5px"}}>
             <h2>{room?.room_name}</h2>  {/* Call Room*/}
 
           {/* This is what is connected to the api */}
           <div className="roomInfo" style={{ 
-                                             display: "flex", 
-                                             justifyContent: "space-around"}} >
+                                            display: "flex", 
+  justifyContent: "center",
+  gap: "20px"}} >
                   
                   {/* the actual room render */}
               <div className="roomRender" style={{ 
-                                                   maxWidth: "70%",
-                                                   minWidth: "70%",
-                                                   display: "flex",
-                                                   flexDirection: "column",
-                                                   alignItems:"center" }} >
-                <p>identify the items in the room and add them to your checklist</p>
+                                                   flex: 2,
+    maxWidth: "800px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems:"center"}} >
+                <p><i>identify the items in the room and add them to your checklist</i></p>
                 <img src={room?.room_image} alt="Isometric view of a cute and cozy living room" 
-                                            style={{width:"70%"}} />
+                                            style={{width:"70%",
+                                                    maxWidth: "500px" 
+                                            }} />
               </div>
 
                 {/* check list for items, populates room items */}
@@ -257,13 +261,15 @@ return newArray;
                                               backgroundColor:"rgba(176, 176, 176, 0.75)",
                                               boxShadow: "0 4px 10px rgba(82, 74, 80, 0.4)",
                                               borderRadius: "10px",
-                                              padding:"5px",
-                                              maxHeight:"200px"}}>
-                <p>Item Check List:</p> 
+                                              padding:"10px",
+                                              maxHeight: "350px",
+                                              maxWidth: "250px"
+                                          }}>
+                <p><b>Item Check List:</b></p> 
                   <ul>
                     {items.map((item)=> <li key={item._id} 
                                             style={{listStyle:"none", 
-                                                    marginLeft:"-35px"}}>
+                                                    marginLeft:"-45px"}}>
 
                     <input type="checkbox" id={item._id} 
                                          name={item.item_eng} 
