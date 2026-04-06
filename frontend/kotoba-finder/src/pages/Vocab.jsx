@@ -63,7 +63,7 @@ function Vocab() {
                                           borderRadius: "10px", 
                                           backgroundColor:"rgba(144, 121, 141, 0.75)",
                                           width:"50%",
-                                          height:"300px",
+                                          height:"380px",
                                           margin:"10px",
                                           padding:"20px"}}>
 {/* 
@@ -86,7 +86,9 @@ function Vocab() {
                                           display:"flex",
                                           flexDirection:"column",
                                           alignItems:"center",
-                                          margin:"10px"
+                                          textAlign:"center",
+                                          margin:"10px",
+                                          padding:"10px"
                                           }}>
 
               {vocab.length === 0 ? (<p>No vocab found! Have you played the game yet? <br/> 
@@ -102,7 +104,7 @@ function Vocab() {
                                     key={word._id} >
                           <p><b>{item.item_eng}</b></p>
                           <img src={item.item_image} style={{maxWidth:"30%"}}/>
-                          <p>description</p>
+                          <p>{item.description_eng}</p>
                         </div>}))
               }
 
@@ -113,9 +115,11 @@ function Vocab() {
                                             flexDirection:"row",
                                             justifyContent:"space-around",
                                             margin:"10px"}}>
+
             <button onClick={decrement}>Shuffle Left</button>
             {/* <button> Flip Card </button> */}
             <button onClick={increment}>Shuffle Right</button>
+            
           </div>
         </div>
       </div>
