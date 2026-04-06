@@ -1,8 +1,43 @@
-About my final project: Kotoba Finder :
+## ABOUT ##
 
-Deployed! :D
+Kotoba Finder is an interactive language-learning web application designed to help beginner to intermediate learners build vocabulary through gameplay, visual context, and guided interaction.
 
-https://kotobafinder.netlify.app/
+ Live Demo:
+·˚ ༘༘⋆ˎˊ˗ https://kotobafinder.netlify.app/ ·˚ ༘༘⋆ˎˊ˗
+
+Learning a second language often presents a gap:
+
+  -Beginner materials are too simple and repetitive
+  -Authentic content is too advanced
+
+Kotoba Finder addresses this by providing:
+
+ -Level-appropriate vocabulary
+ -Interactive, game-based learning
+ -Visual context to reinforce meaning
+ -Light narrative guidance through a character
+
+This project reflects an interest in:
+
+  -storytelling as a learning tool
+  -second language acquisition principles
+  -game UX design for education
+
+Game Mechanics:
+  -Players enter a room/environment (e.g., kitchen, living room)
+  -A character provides a prompt (in target language)
+  -Players identify objects visually
+  -Correct selections are saved as vocabulary cards
+  -Progression unlocks new rooms/environments
+
+
+Features: 
+  -MongoDB database with relational data
+  -User authentication (register/login)
+  -Room ↔ Item relationships via ObjectId
+  -User-specific vocabulary storage
+
+·˚ ༘༘⋆ˎˊ˗ ✧｡٩(ˊᗜˋ )و✧*｡ ·˚ ༘༘⋆ˎˊ˗
 
 Check List:
 
@@ -76,7 +111,7 @@ allows progression to next room after all items collect []
 Make Beautiful [x] // will improve more later
 
 
- Additional Readings:
+·˚ ༘༘⋆ˎˊ˗ Additional Readings: ·˚ ༘༘⋆ˎˊ˗
 
  This project uses a similiar setup to music/streaming apps, where the USER can't add things, but has the ability to log
  in, have access to specific content, and the ability to save/favorite items:
