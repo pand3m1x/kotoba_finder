@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 
 // components
 import WordImage from '../components/WordImage' // fixed lol
+// import Spinner from '../components/Spinner'
 
 // contexts
 import { useUser } from '../context/UserContext'
@@ -188,6 +189,8 @@ return newArray;
 
 
   console.log(currentItemIndex)
+
+  // if (!room) return <Spinner />;
 
   return (
     <div>

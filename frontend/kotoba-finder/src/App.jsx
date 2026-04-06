@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from 'react-router-dom' //Navigate
 
 //import components
 import Navbar from './components/Navbar'
+// import Spinner from './components/Spinner';
 
 //import pages
 import Login from './pages/Login'

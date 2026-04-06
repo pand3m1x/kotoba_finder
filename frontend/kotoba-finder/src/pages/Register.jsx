@@ -61,7 +61,7 @@ function Register() {
                                         flexDirection:"column",
                                         alignItems:"center",
                                         padding:"10px" }}>
-      <h1>Register</h1>
+      <h1>Register・登録(とうろく)</h1>
       <form onSubmit={handleSubmit}>
 
         <label htmlFor="username">Username・ユーザー名</label>
