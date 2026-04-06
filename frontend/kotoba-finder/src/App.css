@@ -17,7 +17,8 @@ body {
   background-attachment: fixed; 
   font-family: system-ui, sans-serif;
   font-size: 1rem;
-  padding:10px;
+  /* padding:10px; */
+  margin: 0;
 }
 
 h1, h2 {

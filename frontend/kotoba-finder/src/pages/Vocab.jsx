@@ -59,12 +59,13 @@ function Vocab() {
 
       <h1>Vocab Deck</h1>
       <p><i>練習しましょう！</i></p>
-      <div className="studySpace" style={{border:"2px solid black", 
+      <div className="studySpace" style={{border:"2px solid rgba(57, 50, 58, 0.75)", 
                                           borderRadius: "10px", 
-                                          backgroundColor:"rgba(128, 128, 128, 0.75)",
+                                          backgroundColor:"rgba(144, 121, 141, 0.75)",
                                           width:"50%",
                                           height:"300px",
-                                          margin:"10px"}}>
+                                          margin:"10px",
+                                          padding:"20px"}}>
 {/* 
         <div className="cardArea" style={{border:"2px solid green",
                                           }}>
@@ -78,13 +79,14 @@ function Vocab() {
           
             <div className="card" style={{
                                           borderRadius:"10px",
-                                          backgroundColor:"tan",
+                                          backgroundColor:"rgba(244, 242, 225, 0.84)",
+                                          boxShadow: "0 4px 10px rgba(75, 57, 71, 0.75)",
                                           width:"400px",
                                           height:"40%",
                                           display:"flex",
                                           flexDirection:"column",
                                           alignItems:"center",
-                                          marginTop:"5px"
+                                          margin:"10px"
                                           }}>
 
               {vocab.length === 0 ? (<p>No vocab found! Have you played the game yet? <br/> 
@@ -94,10 +96,11 @@ function Vocab() {
                 return <div style={{display:"flex",
                                     flexDirection:"column",
                                     alignItems:"center",
-                                    justifyContent:"center"
+                                    justifyContent:"center",
+                                    margin:"5px"
                 }}
-                            key={word._id} >
-                          <p>{item.item_eng}</p>
+                                    key={word._id} >
+                          <p><b>{item.item_eng}</b></p>
                           <img src={item.item_image} style={{maxWidth:"30%"}}/>
                           <p>description</p>
                         </div>}))

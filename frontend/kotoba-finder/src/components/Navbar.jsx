@@ -14,15 +14,16 @@ function Navbar(){
                     flexDirection: "row",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    padding:"5px",
-                    margin:"5px",
-                    color:"white"}}>
+                    
+                    color:"white",
+                    height:"80px",
+                    width:"99.8%"}}>
 
        <li  style={{listStyle:"none", }}>
          <Link to="/"><img src={kotobaLogo} alt="kotoba finder logo" style={{ height: "80px", paddingLeft:"20px" }}/></Link>
        </li>
        
-       {user && <p>こんにちは {user.username} </p>}
+       {user && <p style={{fontSize:"1.5rem"}}>こんにちは <i>{user.username} </i></p>}
 
         <ul style={{listStyle:"none", 
                     display: "flex",

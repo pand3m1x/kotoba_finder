@@ -205,7 +205,9 @@ return newArray;
                                             display: "flex",
                                             flexDirection: "column",
                                             alignItems: "center",
-                                            width: "40%"}}>
+                                            width: "40%",
+                                            margin: "10px",
+                                            }}>
 
           <div className="hintBox" style={{border:"2px solid rgba(182, 135, 186, 0.75)",
                                            borderRadius:"10px",
